@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,19 @@ namespace Sfw.Football
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Autofac setup
+            var builder = new ContainerBuilder();
+            // Register MVC controllers.
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            // Register other types in assemblies
+            //AppDomain.CurrentDomain.Load("Sfw.Football.Massive");
+            //builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+            //   .AsImplementedInterfaces()
+            //   .InstancePerRequest();
+
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }

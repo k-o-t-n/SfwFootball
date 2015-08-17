@@ -47,15 +47,17 @@
   <ItemGroup>
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Players.cs" />
-    <Compile Include="Massive.MySql.cs" />
+    <Compile Include="Massive\Massive.MySql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\IRepository.cs" />
+    <Compile Include="Repositories\Base\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LICENSE.txt" />
+    <Content Include="Massive\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

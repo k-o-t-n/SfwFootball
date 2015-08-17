@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sfw.Football.Massive.Entities;
+using Sfw.Football.Massive.Repositories.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +10,16 @@ namespace Sfw.Football.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IRepository<Players> _playerRepository;
+        public HomeController()
+        {
+            // Sort out autofac!
+            _playerRepository = new Repository<Players>();
+        }
+
         public ActionResult Index()
         {
+            var players = _playerRepository.All();
             return View();
         }
 
