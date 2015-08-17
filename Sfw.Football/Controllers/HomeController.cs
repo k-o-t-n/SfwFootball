@@ -20,6 +20,7 @@ namespace Sfw.Football.Controllers
         public ActionResult Index()
         {
             var players = _playerRepository.All();
+            ViewBag.Players = players;
             return View();
         }
 
