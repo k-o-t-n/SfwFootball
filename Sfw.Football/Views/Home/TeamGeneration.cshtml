@@ -1,0 +1,17 @@
+﻿@model Sfw.Football.Models.TeamGenerationModel
+
+<h1>Team 1</h1>
+<ul>
+    @foreach (var player in Model.Team1)
+    {
+        <li>@player.Name</li>
+    }
+</ul>
+
+<h1>Team 2</h1>
+<ul>
+    @foreach (var player in Model.Team2)
+    {
+        <li>@player.Name</li>
+    }
+</ul>

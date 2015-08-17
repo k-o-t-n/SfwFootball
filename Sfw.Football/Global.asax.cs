@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Reflection;
 
 namespace Sfw.Football
 {
@@ -24,8 +25,10 @@ namespace Sfw.Football
             // Register MVC controllers.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             // Register other types in assemblies
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
-                .Where(t => t.Name.EndsWith("Massive"))
+            List<Assembly> assemblies = new List<Assembly>();
+            assemblies.Add(AppDomain.CurrentDomain.Load("Sfw.Football"));
+            assemblies.Add(AppDomain.CurrentDomain.Load("Sfw.Football.Massive"));
+            builder.RegisterAssemblyTypes(assemblies.ToArray())
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
 

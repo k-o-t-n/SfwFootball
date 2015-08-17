@@ -8,7 +8,7 @@ namespace Sfw.Football.Models
 {
     public class TeamGenerationModel
     {
-        public IEnumerable<Players> Team1 { get; set; }
-        public IEnumerable<Players> Team2 { get; set; }
+        public IEnumerable<dynamic> Team1 { get; set; }
+        public IEnumerable<dynamic> Team2 { get; set; }
     }
 }

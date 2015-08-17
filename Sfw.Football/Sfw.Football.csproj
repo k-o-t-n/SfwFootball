@@ -172,6 +172,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\IShuffler.cs" />
+    <Compile Include="Helpers\Shuffler.cs" />
     <Compile Include="ModelBuilders\ITeamGenerationModelBuilder.cs" />
     <Compile Include="ModelBuilders\TeamGenerationModelBuilder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -236,6 +238,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\TeamGeneration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
