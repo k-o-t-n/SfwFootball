@@ -24,10 +24,10 @@ namespace Sfw.Football
             // Register MVC controllers.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             // Register other types in assemblies
-            //AppDomain.CurrentDomain.Load("Sfw.Football.Massive");
-            //builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
-            //   .AsImplementedInterfaces()
-            //   .InstancePerRequest();
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+                .Where(t => t.Name.EndsWith("Massive"))
+                .AsImplementedInterfaces()
+                .InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
