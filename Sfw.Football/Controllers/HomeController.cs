@@ -12,9 +12,9 @@ namespace Sfw.Football.Controllers
     {
         private readonly IPlayersRepository _playerRepository;
 
-        public HomeController(IPlayersRepository playerRepository)
+        public HomeController()
         {
-            _playerRepository = playerRepository;
+            _playerRepository = new PlayersRepository();
         }
 
         public ActionResult Index()
