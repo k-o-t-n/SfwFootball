@@ -7,17 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfw.Football", "Sfw.Footbal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfw.Football.Tests", "Sfw.Football.Tests\Sfw.Football.Tests.csproj", "{AFE5926C-EB73-46F5-895A-2A6F37920B61}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{2B8C746F-7ED6-45A4-A63F-7F418DC97742}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\AzureVMPublishModule.psm1 = PublishScripts\AzureVMPublishModule.psm1
-		PublishScripts\Publish-WebApplicationVM.ps1 = PublishScripts\Publish-WebApplicationVM.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{2B38D996-93ED-4921-8B62-6E886E87876F}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\Configurations\SfwFootball-WAWS-dev.json = PublishScripts\Configurations\SfwFootball-WAWS-dev.json
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfw.Football.Massive", "Sfw.Football.Massive\Sfw.Football.Massive.csproj", "{1F6E12FE-516C-4014-819F-01836C35AADA}"
 EndProject
 Global
@@ -41,8 +30,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{2B38D996-93ED-4921-8B62-6E886E87876F} = {2B8C746F-7ED6-45A4-A63F-7F418DC97742}
 	EndGlobalSection
 EndGlobal
