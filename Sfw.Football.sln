@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfw.Football", "Sfw.Footbal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfw.Football.Tests", "Sfw.Football.Tests\Sfw.Football.Tests.csproj", "{AFE5926C-EB73-46F5-895A-2A6F37920B61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfw.Football.Massive", "Sfw.Football.Massive\Sfw.Football.Massive.csproj", "{1F6E12FE-516C-4014-819F-01836C35AADA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfw.Football.DataAccess", "Sfw.Football.DataAccess\Sfw.Football.DataAccess.csproj", "{1F6E12FE-516C-4014-819F-01836C35AADA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

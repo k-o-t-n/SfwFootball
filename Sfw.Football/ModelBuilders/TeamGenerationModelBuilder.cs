@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Sfw.Football.Models;
-using Sfw.Football.Massive.Repositories;
+using Sfw.Football.DataAccess.Repositories;
 using Sfw.Football.Helpers;
-using Sfw.Football.Massive.Entities;
+using Sfw.Football.DataAccess.Entities;
 
 namespace Sfw.Football.ModelBuilders
 {
@@ -22,10 +22,11 @@ namespace Sfw.Football.ModelBuilders
 
         public TeamGenerationModel BuildModel()
         {
-            var players = _playersRepository.All().ToList();
+            var players = _playersRepository.GetAll().ToList();
             _shuffler.Shuffle(players);
             return new TeamGenerationModel()
             {
+                AllPlayers = players,
                 Team1 = players.Take(4),
                 Team2 = players.Skip(4).Take(4)
             };

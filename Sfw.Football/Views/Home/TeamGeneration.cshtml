@@ -1,4 +1,10 @@
-﻿@model Sfw.Football.Models.TeamGenerationModel
+﻿@using GridMvc.Html
+@model Sfw.Football.Models.TeamGenerationModel
+
+@Html.Grid(Model.AllPlayers).Columns(columns =>
+{
+    columns.Add(p => p.Name).Titled("Name");
+})
 
 <h1>Team 1</h1>
 <ul>

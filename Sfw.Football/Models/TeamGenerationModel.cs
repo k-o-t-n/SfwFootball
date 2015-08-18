@@ -1,4 +1,4 @@
-﻿using Sfw.Football.Massive.Entities;
+﻿using Sfw.Football.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,8 @@ namespace Sfw.Football.Models
 {
     public class TeamGenerationModel
     {
-        public IEnumerable<dynamic> Team1 { get; set; }
-        public IEnumerable<dynamic> Team2 { get; set; }
+        public IEnumerable<Players> AllPlayers { get; set; }
+        public IEnumerable<Players> Team1 { get; set; }
+        public IEnumerable<Players> Team2 { get; set; }
     }
 }
