@@ -11,28 +11,28 @@ namespace Sfw.Football.ModelBuilders
 {
     public class TeamGenerationModelBuilder : ITeamGenerationModelBuilder
     {
-        private readonly IPlayersRepository _playersRepository;
+        private readonly IPlayerRepository _playersRepository;
         private readonly IShuffler _shuffler;
 
-        public TeamGenerationModelBuilder(IPlayersRepository playersRepository, IShuffler shuffler)
+        public TeamGenerationModelBuilder(IPlayerRepository playersRepository, IShuffler shuffler)
         {
             _playersRepository = playersRepository;
             _shuffler = shuffler;
         }
 
-        public TeamGenerationModel BuildModel()
+        public TeamGenerationModel BuildModelWithNoTeams()
         {
-            var players = _playersRepository.GetAll().ToList();
+            var players = _playersRepository.GetAll().ToList().OrderBy(p => p.Name);
             return new TeamGenerationModel()
             {
                 AllPlayers = players
             };
         }
 
-        public TeamGenerationModel BuildModel(IEnumerable<int> selectedIds)
+        public TeamGenerationModel BuildModelWithTeams(IEnumerable<int> selectedIds)
         {
-            var allPlayers = _playersRepository.GetAll().ToList();
-            var teamPlayers = _playersRepository.GetByIds(selectedIds).ToList();
+            var allPlayers = _playersRepository.GetAll().ToList().OrderBy(p=>p.Name);
+            var teamPlayers = allPlayers.Where(p => selectedIds.Contains(p.Id)).ToList();
             int halfCount = (int)Math.Ceiling((decimal)teamPlayers.Count / 2);
             _shuffler.Shuffle(teamPlayers);
             return new TeamGenerationModel()

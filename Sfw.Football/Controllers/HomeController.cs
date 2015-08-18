@@ -11,19 +11,15 @@ namespace Sfw.Football.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPlayersRepository _playerRepository;
         private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
 
-        public HomeController(IPlayersRepository playersRepository, ITeamGenerationModelBuilder teamGenerationModelBuilder)
+        public HomeController(ITeamGenerationModelBuilder teamGenerationModelBuilder)
         {
-            _playerRepository = playersRepository;
             _teamGenerationModelBuilder = teamGenerationModelBuilder;
         }
 
         public ActionResult Index()
         {
-            var players = _playerRepository.GetAll();
-            ViewBag.Players = players;
             return View();
         }
 
@@ -44,7 +40,7 @@ namespace Sfw.Football.Controllers
         [HttpGet]
         public ActionResult TeamGeneration()
         {
-            TeamGenerationModel model = _teamGenerationModelBuilder.BuildModel();
+            TeamGenerationModel model = _teamGenerationModelBuilder.BuildModelWithNoTeams();
             return View(model);
         }
 
@@ -54,7 +50,7 @@ namespace Sfw.Football.Controllers
             if (formCollection.GetValues("selectCheckBox").Any())
             {
                 var selectedIds = formCollection.GetValues("selectCheckBox").Select(p => int.Parse(p));
-                TeamGenerationModel model = _teamGenerationModelBuilder.BuildModel(selectedIds);
+                TeamGenerationModel model = _teamGenerationModelBuilder.BuildModelWithTeams(selectedIds);
                 return View(model);
             }
             return RedirectToAction("TeamGeneration");
