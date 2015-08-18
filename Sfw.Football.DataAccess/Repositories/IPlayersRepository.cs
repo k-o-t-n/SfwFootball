@@ -9,6 +9,6 @@ namespace Sfw.Football.DataAccess.Repositories
 {
     public interface IPlayersRepository
     {
-        IEnumerable<Players> GetAll();
+        IEnumerable<Player> GetAll();
     }
 }

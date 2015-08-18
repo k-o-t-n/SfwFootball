@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sfw.Football.DataAccess.Entities
 {
-    public class Players : BaseEntity
+    public class Player : BaseEntity
     {
         public string Name { get; set; }
         public int Rating { get; set; }
