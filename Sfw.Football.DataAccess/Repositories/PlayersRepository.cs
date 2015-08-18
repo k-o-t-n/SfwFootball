@@ -9,11 +9,16 @@ namespace Sfw.Football.DataAccess.Repositories
 {
     public class PlayersRepository : IPlayersRepository
     {
+        private readonly PetaPoco.Database db = new PetaPoco.Database("defaultConnection");
         public IEnumerable<Player> GetAll()
         {
-            var db = new PetaPoco.Database("defaultConnection");
-
             return db.Query<Player>("SELECT * FROM Player");
+        }
+
+        public IEnumerable<Player> GetByIds(IEnumerable<int> ids)
+        {
+            var query = PetaPoco.Sql.Builder.Select("*").From("Player").Where("Id in (@Ids)", new { Ids = ids });
+            return db.Query<Player>(query);
         }
     }
 }

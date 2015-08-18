@@ -1,23 +1,39 @@
 ﻿@using GridMvc.Html
 @model Sfw.Football.Models.TeamGenerationModel
 
-@Html.Grid(Model.AllPlayers).Columns(columns =>
+@{
+    ViewBag.Title = "Team Generation";
+}
+
+<h1>Select Players</h1>
+@using (Html.BeginForm("TeamGeneration", "Home", FormMethod.Post))
 {
-    columns.Add(p => p.Name).Titled("Name");
-})
+    @Html.Grid(Model.AllPlayers).Columns(columns =>
+{
+columns.Add(p => p.Name).Titled("Name");
+columns.Add()
+    .Sanitized(false)
+    .Encoded(false)
+    .RenderValueAs(o => "<input type='checkbox' name='SelectCheckBox' value="+o.Id+" />");
+    })
+    <input type="submit" />
+}
 
-<h1>Team 1</h1>
-<ul>
-    @foreach (var player in Model.Team1)
-    {
-        <li>@player.Name</li>
-    }
-</ul>
+@if (Model.Team1 != null && Model.Team1.Any() && Model.Team2 != null && Model.Team2.Any())
+{
+    <h1>Team 1</h1>
+    <ul>
+        @foreach (var player in Model.Team1)
+        {
+            <li>@player.Name</li>
+        }
+    </ul>
 
-<h1>Team 2</h1>
-<ul>
-    @foreach (var player in Model.Team2)
-    {
-        <li>@player.Name</li>
-    }
-</ul>
+    <h1>Team 2</h1>
+    <ul>
+        @foreach (var player in Model.Team2)
+        {
+            <li>@player.Name</li>
+        }
+    </ul>
+}

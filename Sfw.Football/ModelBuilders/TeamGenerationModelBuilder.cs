@@ -23,12 +23,23 @@ namespace Sfw.Football.ModelBuilders
         public TeamGenerationModel BuildModel()
         {
             var players = _playersRepository.GetAll().ToList();
-            _shuffler.Shuffle(players);
             return new TeamGenerationModel()
             {
-                AllPlayers = players,
-                Team1 = players.Take(4),
-                Team2 = players.Skip(4).Take(4)
+                AllPlayers = players
+            };
+        }
+
+        public TeamGenerationModel BuildModel(IEnumerable<int> selectedIds)
+        {
+            var allPlayers = _playersRepository.GetAll().ToList();
+            var teamPlayers = _playersRepository.GetByIds(selectedIds).ToList();
+            int halfCount = (int)Math.Ceiling((decimal)teamPlayers.Count / 2);
+            _shuffler.Shuffle(teamPlayers);
+            return new TeamGenerationModel()
+            {
+                AllPlayers = allPlayers,
+                Team1 = teamPlayers.Take(halfCount),
+                Team2 = teamPlayers.Skip(halfCount).Take(teamPlayers.Count - halfCount)
             };
         }
     }

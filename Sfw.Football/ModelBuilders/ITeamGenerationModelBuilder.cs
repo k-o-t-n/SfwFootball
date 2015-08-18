@@ -10,5 +10,6 @@ namespace Sfw.Football.ModelBuilders
     public interface ITeamGenerationModelBuilder
     {
         TeamGenerationModel BuildModel();
+        TeamGenerationModel BuildModel(IEnumerable<int> selectedIds);
     }
 }
