@@ -16,7 +16,7 @@ columns.Add()
     .Encoded(false)
     .RenderValueAs(o => "<input type='checkbox' name='SelectCheckBox' value="+o.Id+" />");
     })
-    <input type="submit" />
+    <input type="submit" value="Generate Teams" />
 }
 
 @if (Model.Team1 != null && Model.Team1.Any() && Model.Team2 != null && Model.Team2.Any())
