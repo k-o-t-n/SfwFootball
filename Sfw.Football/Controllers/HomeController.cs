@@ -1,5 +1,4 @@
-﻿using Sfw.Football.Massive.Entities;
-using Sfw.Football.Massive.Repositories;
+﻿using Sfw.Football.DataAccess.Repositories;
 using Sfw.Football.ModelBuilders;
 using Sfw.Football.Models;
 using System;
@@ -23,7 +22,7 @@ namespace Sfw.Football.Controllers
 
         public ActionResult Index()
         {
-            var players = _playerRepository.All();
+            var players = _playerRepository.GetAll();
             ViewBag.Players = players;
             return View();
         }

@@ -1,6 +1,6 @@
 ﻿using FakeItEasy;
 using Sfw.Football.Controllers;
-using Sfw.Football.Massive.Repositories;
+using Sfw.Football.DataAccess.Repositories;
 using Sfw.Football.ModelBuilders;
 using System.Web.Mvc;
 using Xunit;
