@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Sfw.Football.Massive.Entities;
+using Sfw.Football.Massive.Repositories;
+using Sfw.Football.ModelBuilders;
+using Sfw.Football.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +12,19 @@ namespace Sfw.Football.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPlayersRepository _playerRepository;
+        private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
+
+        public HomeController(IPlayersRepository playersRepository, ITeamGenerationModelBuilder teamGenerationModelBuilder)
+        {
+            _playerRepository = playersRepository;
+            _teamGenerationModelBuilder = teamGenerationModelBuilder;
+        }
+
         public ActionResult Index()
         {
+            var players = _playerRepository.All();
+            ViewBag.Players = players;
             return View();
         }
 
@@ -25,6 +40,12 @@ namespace Sfw.Football.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult TeamGeneration()
+        {
+            TeamGenerationModel model = _teamGenerationModelBuilder.BuildModel();
+            return View(model);
         }
     }
 }
