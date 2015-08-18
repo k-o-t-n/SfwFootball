@@ -27,7 +27,7 @@ namespace Sfw.Football
             // Register other types in assemblies
             List<Assembly> assemblies = new List<Assembly>();
             assemblies.Add(AppDomain.CurrentDomain.Load("Sfw.Football"));
-            assemblies.Add(AppDomain.CurrentDomain.Load("Sfw.Football.Massive"));
+            assemblies.Add(AppDomain.CurrentDomain.Load("Sfw.Football.DataAccess"));
             builder.RegisterAssemblyTypes(assemblies.ToArray())
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
