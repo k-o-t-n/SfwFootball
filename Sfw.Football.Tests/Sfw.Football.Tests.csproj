@@ -112,7 +112,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sfw.Football.Massive\Sfw.Football.Massive.csproj">
+    <ProjectReference Include="..\Sfw.Football.DataAccess\Sfw.Football.DataAccess.csproj">
       <Project>{1f6e12fe-516c-4014-819f-01836c35aada}</Project>
       <Name>Sfw.Football.Massive</Name>
     </ProjectReference>
