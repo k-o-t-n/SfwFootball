@@ -23,8 +23,11 @@ textarea {
     max-width: 280px;
 }
 
-.branded-navbar
-{
-    background: linear-gradient(to top right, #00a499 , #00A9E0);
+.branded-navbar {
+    background: linear-gradient(to top right, #00a499, #00A9E0);
     border: none;
+}
+
+.grid-table {
+    border: solid 1px #dddddd;
 }
