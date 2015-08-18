@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sfw.Football.DataAccess.Repositories
 {
-    public interface IPlayersRepository
+    public interface IPlayerRepository
     {
         IEnumerable<Player> GetAll();
         IEnumerable<Player> GetByIds(IEnumerable<int> ids);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sfw.Football.DataAccess.Repositories
 {
-    public class PlayersRepository : IPlayersRepository
+    public class PlayerRepository : IPlayerRepository
     {
         private readonly PetaPoco.Database db = new PetaPoco.Database("defaultConnection");
         public IEnumerable<Player> GetAll()

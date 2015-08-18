@@ -4544,7 +4544,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #333333;
 }
 
 .navbar-inverse .navbar-toggle:hover,
@@ -4558,7 +4557,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  border-color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
