@@ -41,10 +41,23 @@ namespace Sfw.Football.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult TeamGeneration()
         {
             TeamGenerationModel model = _teamGenerationModelBuilder.BuildModel();
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult TeamGeneration(FormCollection formCollection)
+        {
+            if (formCollection.GetValues("selectCheckBox").Any())
+            {
+                var selectedIds = formCollection.GetValues("selectCheckBox").Select(p => int.Parse(p));
+                TeamGenerationModel model = _teamGenerationModelBuilder.BuildModel(selectedIds);
+                return View(model);
+            }
+            return RedirectToAction("TeamGeneration");
         }
     }
 }

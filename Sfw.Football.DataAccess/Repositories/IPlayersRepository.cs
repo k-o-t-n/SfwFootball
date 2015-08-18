@@ -10,5 +10,6 @@ namespace Sfw.Football.DataAccess.Repositories
     public interface IPlayersRepository
     {
         IEnumerable<Player> GetAll();
+        IEnumerable<Player> GetByIds(IEnumerable<int> ids);
     }
 }
