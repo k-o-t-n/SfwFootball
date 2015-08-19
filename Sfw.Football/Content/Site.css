@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 20px;
 }
 
@@ -21,4 +21,13 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.branded-navbar {
+    background: linear-gradient(to top right, #00a499, #00A9E0);
+    border: none;
+}
+
+.grid-table {
+    border: solid 1px #dddddd;
 }

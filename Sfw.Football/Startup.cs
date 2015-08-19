@@ -8,7 +8,6 @@ namespace Sfw.Football
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }
