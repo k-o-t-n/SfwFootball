@@ -11,13 +11,18 @@ namespace Sfw.Football.Tests.Controllers
     {
         private ITeamGenerationModelBuilder teamGenerationModelBuilder;
         private ITeamDisplayModelBuilder teamDisplayModelBuilder;
+        private IStandingsModelBuilder standingsModelBuilder;
         private HomeController controller;
 
         public HomeControllerTests()
         {
             teamGenerationModelBuilder = A.Fake<ITeamGenerationModelBuilder>();
             teamDisplayModelBuilder = A.Fake<ITeamDisplayModelBuilder>();
-            controller = new HomeController(teamGenerationModelBuilder, teamDisplayModelBuilder);
+            standingsModelBuilder = A.Fake<IStandingsModelBuilder>();
+            controller = new HomeController(
+                teamGenerationModelBuilder, 
+                teamDisplayModelBuilder, 
+                standingsModelBuilder);
         }
 
         [Fact]

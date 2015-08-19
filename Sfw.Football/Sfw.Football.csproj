@@ -178,12 +178,15 @@
     </Compile>
     <Compile Include="Helpers\IShuffler.cs" />
     <Compile Include="Helpers\Shuffler.cs" />
+    <Compile Include="ModelBuilders\IStandingsModelBuilder.cs" />
     <Compile Include="ModelBuilders\ITeamDisplayModelBuilder.cs" />
     <Compile Include="ModelBuilders\ITeamGenerationModelBuilder.cs" />
+    <Compile Include="ModelBuilders\StandingsModelBuilder.cs" />
     <Compile Include="ModelBuilders\TeamDisplayModelBuilder.cs" />
     <Compile Include="ModelBuilders\TeamGenerationModelBuilder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StandingsModel.cs" />
     <Compile Include="Models\TeamDisplayModel.cs" />
     <Compile Include="Models\TeamGenerationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
