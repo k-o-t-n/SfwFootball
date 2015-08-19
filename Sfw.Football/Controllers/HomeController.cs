@@ -13,16 +13,21 @@ namespace Sfw.Football.Controllers
     {
         private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
         private readonly ITeamDisplayModelBuilder _teamDisplayModelBuilder;
+        private readonly IStandingsModelBuilder _standingsModelBuilder;
 
-        public HomeController(ITeamGenerationModelBuilder teamGenerationModelBuilder, ITeamDisplayModelBuilder teamDisplayModelBuilder)
+        public HomeController(ITeamGenerationModelBuilder teamGenerationModelBuilder, 
+            ITeamDisplayModelBuilder teamDisplayModelBuilder,
+            IStandingsModelBuilder standingsModelBuilder)
         {
             _teamGenerationModelBuilder = teamGenerationModelBuilder;
             _teamDisplayModelBuilder = teamDisplayModelBuilder;
+            _standingsModelBuilder = standingsModelBuilder;
         }
 
         public ActionResult Index()
         {
-            return View();
+            StandingsModel model = _standingsModelBuilder.BuildModel();
+            return View(model);
         }
 
         public ActionResult About()

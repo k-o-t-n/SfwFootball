@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Sfw.Football.Models.StandingsModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,3 +7,22 @@
     <h1>SFW Wednesday Football League</h1>
 </div>
 
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Player</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.AllPlayers.Count(); i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@Html.DisplayFor(m => m.AllPlayers.ElementAt(i).Name)</td>
+                <td>@Html.DisplayFor(m => m.AllPlayers.ElementAt(i).Rating)</td>
+            </tr>
+        }
+    </tbody>
+</table>
