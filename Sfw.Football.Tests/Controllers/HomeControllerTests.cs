@@ -9,14 +9,15 @@ namespace Sfw.Football.Tests.Controllers
 {
     public class HomeControllerTests
     {
-        private IPlayerRepository playersRepository;
-        private ITeamGenerationModelBuilder modelBuilder;
+        private ITeamGenerationModelBuilder teamGenerationModelBuilder;
+        private ITeamDisplayModelBuilder teamDisplayModelBuilder;
         private HomeController controller;
 
         public HomeControllerTests()
         {
-            modelBuilder = A.Fake<ITeamGenerationModelBuilder>();
-            controller = new HomeController(modelBuilder);
+            teamGenerationModelBuilder = A.Fake<ITeamGenerationModelBuilder>();
+            teamDisplayModelBuilder = A.Fake<ITeamDisplayModelBuilder>();
+            controller = new HomeController(teamGenerationModelBuilder, teamDisplayModelBuilder);
         }
 
         [Fact]

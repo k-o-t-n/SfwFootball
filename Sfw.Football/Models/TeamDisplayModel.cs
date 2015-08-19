@@ -6,8 +6,9 @@ using System.Web;
 
 namespace Sfw.Football.Models
 {
-    public class TeamGenerationModel
+    public class TeamDisplayModel
     {
-        public IEnumerable<Player> AllPlayers { get; set; }
+        public IEnumerable<Player> Team1 { get; set; }
+        public IEnumerable<Player> Team2 { get; set; }
     }
 }
