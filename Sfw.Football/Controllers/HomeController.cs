@@ -12,10 +12,12 @@ namespace Sfw.Football.Controllers
     public class HomeController : Controller
     {
         private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
+        private readonly ITeamDisplayModelBuilder _teamDisplayModelBuilder;
 
-        public HomeController(ITeamGenerationModelBuilder teamGenerationModelBuilder)
+        public HomeController(ITeamGenerationModelBuilder teamGenerationModelBuilder, ITeamDisplayModelBuilder teamDisplayModelBuilder)
         {
             _teamGenerationModelBuilder = teamGenerationModelBuilder;
+            _teamDisplayModelBuilder = teamDisplayModelBuilder;
         }
 
         public ActionResult Index()
@@ -40,17 +42,29 @@ namespace Sfw.Football.Controllers
         [HttpGet]
         public ActionResult TeamGeneration()
         {
-            TeamGenerationModel model = _teamGenerationModelBuilder.BuildModelWithNoTeams();
+            TeamGenerationModel model = _teamGenerationModelBuilder.BuildModel();
             return View(model);
         }
 
         [HttpPost]
         public ActionResult TeamGeneration(FormCollection formCollection)
         {
-            if (formCollection.GetValues("selectCheckBox").Any())
+            if (formCollection.GetValues("selectCheckBox") != null && formCollection.GetValues("selectCheckBox").Count() > 1)
             {
-                var selectedIds = formCollection.GetValues("selectCheckBox").Select(p => int.Parse(p));
-                TeamGenerationModel model = _teamGenerationModelBuilder.BuildModelWithTeams(selectedIds);
+                var selectedIds = formCollection.GetValues("selectCheckBox").Select(int.Parse).ToList();
+                TempData["selectedIds"] = selectedIds;
+                return RedirectToAction("TeamDisplay");
+            }
+            return RedirectToAction("TeamGeneration");
+        }
+
+        [HttpGet]
+        public ActionResult TeamDisplay()
+        {
+            IEnumerable<int> selectedIds = (IEnumerable<int>)TempData["selectedIds"];
+            if (selectedIds != null && selectedIds.Count() > 1)
+            {
+                TeamDisplayModel model = _teamDisplayModelBuilder.BuildModel(selectedIds);
                 return View(model);
             }
             return RedirectToAction("TeamGeneration");
