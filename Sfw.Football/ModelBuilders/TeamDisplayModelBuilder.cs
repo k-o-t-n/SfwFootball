@@ -5,6 +5,7 @@ using System.Web;
 using Sfw.Football.Models;
 using Sfw.Football.DataAccess.Repositories;
 using Sfw.Football.Helpers;
+using Sfw.Football.TeamGeneration;
 
 namespace Sfw.Football.ModelBuilders
 {
@@ -12,22 +13,23 @@ namespace Sfw.Football.ModelBuilders
     {
         private readonly IPlayerRepository _playerRepository;
         private readonly IShuffler _shuffler;
+        private readonly ITeamGenerator _teamGenerator;
 
-        public TeamDisplayModelBuilder(IPlayerRepository playerRepository, IShuffler shuffler)
+        public TeamDisplayModelBuilder(IPlayerRepository playerRepository, IShuffler shuffler, ITeamGenerator teamGenerator)
         {
             _playerRepository = playerRepository;
             _shuffler = shuffler;
+            _teamGenerator = teamGenerator;
         }
 
         public TeamDisplayModel BuildModel(IEnumerable<int> selectedIds)
         {
             var teamPlayers = _playerRepository.GetByIds(selectedIds).ToList();
-            int halfCount = (int)Math.Ceiling((decimal)teamPlayers.Count / 2);
-            _shuffler.Shuffle(teamPlayers);
+            var teams = _teamGenerator.GenerateTeams(teamPlayers);
             return new TeamDisplayModel()
             {
-                Team1 = teamPlayers.Take(halfCount),
-                Team2 = teamPlayers.Skip(halfCount).Take(teamPlayers.Count - halfCount)
+                Team1 = teams.Item1,
+                Team2 = teams.Item2
             };
         }
     }
