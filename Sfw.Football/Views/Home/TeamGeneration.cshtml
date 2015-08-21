@@ -8,13 +8,14 @@
 <h1>Select Players</h1>
 @using (Html.BeginForm("TeamGeneration", "Home", FormMethod.Post))
 {
-    @Html.Grid(Model.AllPlayers).Columns(columns =>
+    @Html.Grid(Model.AllPlayers).Named("allPlayersGrid").Columns(columns =>
 {
-columns.Add(p => p.Name).Titled("Name");
-columns.Add()
-    .Sanitized(false)
-    .Encoded(false)
-    .RenderValueAs(o => "<input type='checkbox' name='SelectCheckBox' value="+o.Id+" />");
-    })
+    columns.Add(p => p.Id, true);
+    columns.Add(p => p.Name).Titled("Name");
+    columns.Add()
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(o => "<input type='checkbox' name='SelectCheckBox' value=" + o.Id + " id=CheckBox" + o.Id + " />");
+})
     <input type="submit" value="Generate Teams" class="btn btn-default" />
 }
