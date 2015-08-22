@@ -30,6 +30,7 @@ namespace Sfw.Football
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
+                      "~/Content/gridmvc.css",
                       "~/Content/component.css"));
         }
     }

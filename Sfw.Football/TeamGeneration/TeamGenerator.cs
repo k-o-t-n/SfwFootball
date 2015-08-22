@@ -36,10 +36,12 @@ namespace Sfw.Football.TeamGeneration
                 var team2Temp = selectedPlayers.Except(team1Temp).ToList();
                 int team2Score = team2Temp.Sum(p => p.Rating);
                 decimal totalDifferential = Math.Abs(team1Score - target) + Math.Abs(team2Score - target);
-                if (bestDifferential == -1 || totalDifferential < bestDifferential)
+                if (bestDifferential == -1 || totalDifferential <= bestDifferential)
                 {
-                    // Everything found so far is not a solution, so wipe the list
-                    solutions = new List<Tuple<IEnumerable<Player>, IEnumerable<Player>>>();
+                    if (totalDifferential < bestDifferential)
+                        // Everything found so far is not a solution, so wipe the list
+                        solutions = new List<Tuple<IEnumerable<Player>, IEnumerable<Player>>>();
+
                     solutions.Add(new Tuple<IEnumerable<Player>, IEnumerable<Player>>(team1Temp, team2Temp));
                     bestDifferential = totalDifferential;
                 }

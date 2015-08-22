@@ -12,13 +12,11 @@ namespace Sfw.Football.ModelBuilders
     public class TeamDisplayModelBuilder : ITeamDisplayModelBuilder
     {
         private readonly IPlayerRepository _playerRepository;
-        private readonly IShuffler _shuffler;
         private readonly ITeamGenerator _teamGenerator;
 
-        public TeamDisplayModelBuilder(IPlayerRepository playerRepository, IShuffler shuffler, ITeamGenerator teamGenerator)
+        public TeamDisplayModelBuilder(IPlayerRepository playerRepository, ITeamGenerator teamGenerator)
         {
             _playerRepository = playerRepository;
-            _shuffler = shuffler;
             _teamGenerator = teamGenerator;
         }
 

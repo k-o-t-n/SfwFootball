@@ -12,10 +12,11 @@
 {
     columns.Add(p => p.Id, true);
     columns.Add(p => p.Name).Titled("Name");
-    columns.Add()
+    columns.Add(true)
         .Sanitized(false)
         .Encoded(false)
-        .RenderValueAs(o => "<input type='checkbox' name='SelectCheckBox' value=" + o.Id + " id=CheckBox" + o.Id + " />");
+        .RenderValueAs(o => "<input class='SelectPlayerCheckBox' type='checkbox' name='SelectCheckBox' value=" + o.Id + " id=CheckBox" + o.Id + " />");
 })
+    <br />
     <input type="submit" value="Generate Teams" class="btn btn-default" />
 }
