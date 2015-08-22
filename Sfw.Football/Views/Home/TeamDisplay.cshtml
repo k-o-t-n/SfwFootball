@@ -1,25 +1,24 @@
-﻿@model Sfw.Football.Models.TeamDisplayModel
+﻿@using GridMvc.Html
+@model Sfw.Football.Models.TeamDisplayModel
 
 @{
-    ViewBag.Title = "TeamDisplay";
+    ViewBag.Title = "Team Display";
 }
 
 @if (Model.Team1 != null && Model.Team1.Any() && Model.Team2 != null && Model.Team2.Any())
 {
     <h1>Team 1</h1>
-    <ul>
-        @foreach (var player in Model.Team1)
-        {
-            <li>@player.Name</li>
-        }
-    </ul>
-
+    @Html.Grid(Model.Team1).Named("team1Grid").Columns(columns =>
+{
+    columns.Add(p => p.Id, true);
+    columns.Add(p => p.Name).Titled("Name");
+})
+    <hr />
     <h1>Team 2</h1>
-    <ul>
-        @foreach (var player in Model.Team2)
-        {
-            <li>@player.Name</li>
-        }
-    </ul>
+    @Html.Grid(Model.Team2).Named("team2Grid").Columns(columns =>
+{
+    columns.Add(p => p.Id, true);
+    columns.Add(p => p.Name).Titled("Name");
+})
 }
 
