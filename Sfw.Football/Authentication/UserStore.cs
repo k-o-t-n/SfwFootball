@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Sfw.Football.DataAccess.Repositories;
+using Sfw.Football.DataAccess.Entities;
 
 namespace Sfw.Football.Authentication
 {
@@ -12,56 +13,72 @@ namespace Sfw.Football.Authentication
         IUserPasswordStore<TUser>
         where TUser : AuthenticatedUser
     {
-        private IIdentityRepository<TUser> _identities;
+        private IIdentityRepository<User> _identities;
 
-        public UserStore(IIdentityRepository<TUser> identities)
+        public UserStore(IIdentityRepository<User> identities)
         {
             _identities = identities;
         }
 
         public Task CreateAsync(TUser user)
         {
-            throw new NotImplementedException();
+            return _identities.CreateUserAsync(MapUser(user));
         }
 
         public Task DeleteAsync(TUser user)
         {
-            throw new NotImplementedException();
+            return _identities.DeleteUserAsync(MapUser(user));
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _identities.Dispose();
         }
 
         public async Task<TUser> FindByIdAsync(string userId)
         {
-            return await Task.FromResult(_identities.FindById(userId));
+            return new AuthenticatedUser(await _identities.FindByIdAsync(userId)) as TUser;
         }
 
         public async Task<TUser> FindByNameAsync(string userName)
         {
-            return await Task.FromResult(_identities.FindByName(userName));
+            var result = await _identities.FindByNameAsync(userName);
+            if (result != null)
+            {
+                return new AuthenticatedUser(result) as TUser;
+            }
+            return new AuthenticatedUser(userName) as TUser;
         }
 
         public async Task<string> GetPasswordHashAsync(TUser user)
         {
-            return await Task.FromResult(_identities.GetPasswordHashByUserId(user.Id));
+            return await Task.FromResult(user.PasswordHash);
         }
 
         public async Task<bool> HasPasswordAsync(TUser user)
         {
-            return await Task.FromResult(_identities.HasPassword(user.Id));
+            return await Task.FromResult(user.PasswordHash != null);
         }
 
         public Task SetPasswordHashAsync(TUser user, string passwordHash)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(user.PasswordHash = passwordHash);
         }
 
-        public Task UpdateAsync(TUser user)
+        public async Task UpdateAsync(TUser user)
         {
-            throw new NotImplementedException();
+            await _identities.SaveUserAsync(MapUser(user));
+        }
+
+        private User MapUser(TUser user)
+        {
+            return new User
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                PasswordHash = user.PasswordHash,
+                Email = user.Email
+            };
         }
     }
 }

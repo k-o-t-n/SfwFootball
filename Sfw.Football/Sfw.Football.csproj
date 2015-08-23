@@ -178,7 +178,9 @@
     <Compile Include="ModelBuilders\StandingsModelBuilder.cs" />
     <Compile Include="ModelBuilders\TeamDisplayModelBuilder.cs" />
     <Compile Include="ModelBuilders\TeamGenerationModelBuilder.cs" />
+    <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\NewUserViewModel.cs" />
     <Compile Include="Models\StandingsModel.cs" />
     <Compile Include="Models\TeamDisplayModel.cs" />
     <Compile Include="Models\TeamGenerationModel.cs" />
@@ -191,6 +193,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\component.css" />
     <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\signin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -232,6 +235,8 @@
     <Content Include="Views\Home\TeamDisplay.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

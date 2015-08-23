@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,10 +15,6 @@ namespace Sfw.Football.Controllers
     public class AuthController : Controller
     {
         private UserManager<AuthenticatedUser> _userManager;
-
-        public AuthController() : this(Startup.UserManagerFactory.Invoke())
-        {
-        }
 
         public AuthController(UserManager<AuthenticatedUser> userManager)
         {
@@ -36,26 +33,19 @@ namespace Sfw.Football.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public async Task<ActionResult> Login(LoginModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            var user = _userManager.FindByName("test@test.com");
-
+            var user = await _userManager.FindAsync(model.UserName, model.Password);
+            
             //temp auth hack
-            if (model.Email == "test@test.com" && model.Password == "password")
+            if (user != null)
             {
-                var identity = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, "Matt"),
-                    new Claim(ClaimTypes.Email, "test@test.com"),
-                    new Claim(ClaimTypes.Country, "England")
-                },
-                "ApplicationCookie");
-
+                var identity = await _userManager.CreateIdentityAsync(user, "ApplicationCookie");
                 var context = Request.GetOwinContext();
                 var authManager = context.Authentication;
 

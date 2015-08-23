@@ -3,15 +3,14 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
-
 @Html.ValidationSummary(true)
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("login", "auth", FormMethod.Post, new { @class = "form-signin" }))
 {
-    @Html.EditorForModel()
-
-    <p>
-        <button type="submit">Log in</button>
-    </p>
+    <h2 class="form-signin-heading">Login</h2>
+    @Html.LabelFor(m => m.UserName, new { @class = "sr-only" })
+    @Html.EditorFor(m => m.UserName, new { @class = "form-control" })
+    @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+    @Html.EditorFor(m => m.Password, new { @class = "form-control" })
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
 }

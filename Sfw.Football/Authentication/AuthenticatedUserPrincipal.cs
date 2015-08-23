@@ -12,6 +12,14 @@ namespace Sfw.Football.Authentication
         {
         }
 
+        public string Id
+        {
+            get
+            {
+                return this.FindFirst(ClaimTypes.NameIdentifier).Value;
+            }
+        }
+
         public string Name
         {
             get
