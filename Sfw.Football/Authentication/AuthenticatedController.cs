@@ -5,11 +5,11 @@ namespace Sfw.Football.Authentication
 {
     public abstract class AuthenticatedController : Controller
     {
-        public AuthenticatedUser CurrentUser
+        public AuthenticatedUserPrincipal CurrentUser
         {
             get
             {
-                return new AuthenticatedUser(this.User as ClaimsPrincipal);
+                return new AuthenticatedUserPrincipal(this.User as ClaimsPrincipal);
             }
         }
     }

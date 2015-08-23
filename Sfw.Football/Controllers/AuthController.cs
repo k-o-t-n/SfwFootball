@@ -1,4 +1,6 @@
-﻿using Sfw.Football.Models;
+﻿using Microsoft.AspNet.Identity;
+using Sfw.Football.Authentication;
+using Sfw.Football.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,17 @@ namespace Sfw.Football.Controllers
     [AllowAnonymous]
     public class AuthController : Controller
     {
+        private UserManager<AuthenticatedUser> _userManager;
+
+        public AuthController() : this(Startup.UserManagerFactory.Invoke())
+        {
+        }
+
+        public AuthController(UserManager<AuthenticatedUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet]
         public ActionResult Login(string returnUrl)
         {
@@ -29,6 +42,8 @@ namespace Sfw.Football.Controllers
             {
                 return View();
             }
+
+            var user = _userManager.FindByName("test@test.com");
 
             //temp auth hack
             if (model.Email == "test@test.com" && model.Password == "password")
