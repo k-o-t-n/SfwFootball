@@ -11,10 +11,14 @@ namespace Sfw.Football.Controllers
 {
     public partial class HomeController : Controller
     {
+        private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
+        private readonly ITeamDisplayModelBuilder _teamDisplayModelBuilder;
         private readonly IStandingsModelBuilder _standingsModelBuilder;
 
         public HomeController(IStandingsModelBuilder standingsModelBuilder)
         {
+            _teamGenerationModelBuilder = teamGenerationModelBuilder;
+            _teamDisplayModelBuilder = teamDisplayModelBuilder;
             _standingsModelBuilder = standingsModelBuilder;
         }
 
@@ -22,20 +26,6 @@ namespace Sfw.Football.Controllers
         {
             StandingsModel model = _standingsModelBuilder.BuildModel();
             return View(model);
-        }
-
-        public virtual ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public virtual ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }
