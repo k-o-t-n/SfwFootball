@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `player` (
 
 -- ratings correct as of 19-08-2015
 
-INSERT INTO `sfwfootballdev`.`player`
+INSERT INTO `player`
 (`Id`,
 `Name`,
 `Rating`)
