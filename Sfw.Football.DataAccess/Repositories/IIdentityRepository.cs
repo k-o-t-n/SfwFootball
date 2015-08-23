@@ -10,7 +10,7 @@ namespace Sfw.Football.DataAccess.Repositories
     {
         TUser FindById(string userId);
         TUser FindByName(string userName);
-        string GetPasswordHashByUserId(string userId);
-        bool HasPassword(string userId);
+        void SetPasswordHash(string userId, string passwordHash);
+        void SaveUser(TUser user);
     }
 }
