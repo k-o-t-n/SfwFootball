@@ -115,8 +115,10 @@ namespace Sfw.Football.Tests.TeamGeneration
 
             var result = teamGenerator.GenerateTeams(selectedPlayers);
 
-            result.Item1.Sum(p => p.Rating).Should().Be(0);
-            result.Item2.Sum(p => p.Rating).Should().Be(0);
+            int expected = (r1 + r2 + r3) / 2;
+
+            result.Item1.Sum(p => p.Rating).Should().Be(expected);
+            result.Item2.Sum(p => p.Rating).Should().Be(expected);
         }
     }
 }

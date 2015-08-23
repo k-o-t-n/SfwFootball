@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NPoco;
+using NPoco.Expressions;
 
 namespace Sfw.Football.DataAccess.Repositories
 {
     public class PlayerRepository : IPlayerRepository
     {
-        private readonly PetaPoco.Database db = new PetaPoco.Database("defaultConnection");
+        private readonly Database db = new Database("defaultConnection");
         public IEnumerable<Player> GetAll()
         {
-            return db.Query<Player>("SELECT * FROM Player");
+            return db.Fetch<Player>();
         }
 
         public IEnumerable<Player> GetByIds(IEnumerable<int> ids)
         {
-            var query = PetaPoco.Sql.Builder.Select("*").From("Player").Where("Id in (@Ids)", new { Ids = ids });
-            return db.Query<Player>(query);
+            return db.FetchWhere<Player>(p => p.Id.In(ids));
         }
     }
 }
