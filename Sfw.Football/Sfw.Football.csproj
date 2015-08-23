@@ -81,8 +81,8 @@
       <HintPath>..\packages\MySql.Data.6.7.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -155,7 +155,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Authentication\AuthenticatedController.cs" />
+    <Compile Include="Authentication\AuthenticatedUser.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ExtensionMethods\ListExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,6 +172,7 @@
     <Compile Include="ModelBuilders\StandingsModelBuilder.cs" />
     <Compile Include="ModelBuilders\TeamDisplayModelBuilder.cs" />
     <Compile Include="ModelBuilders\TeamGenerationModelBuilder.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\StandingsModel.cs" />
     <Compile Include="Models\TeamDisplayModel.cs" />
     <Compile Include="Models\TeamGenerationModel.cs" />
@@ -220,10 +224,11 @@
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\Home\TeamDisplay.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Sfw.Football.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
