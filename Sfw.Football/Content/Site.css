@@ -31,3 +31,11 @@ textarea {
 .grid-table {
     border: solid 1px #dddddd;
 }
+
+#standings {
+    margin-top: 50px;
+}
+
+#standings th {
+    border-bottom: 4px solid #893CA2;
+}

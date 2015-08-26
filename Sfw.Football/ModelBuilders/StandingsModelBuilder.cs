@@ -20,9 +20,11 @@ namespace Sfw.Football.ModelBuilders
 		{
 			var players = _playerRepository
                 .GetAll()
+                .Where(p => p.GamesPlayed != 0)
                 .ToList()
                 .OrderBy(p => p.Name)
-                .OrderByDescending(p => p.Rating);
+                .OrderByDescending(p => p.PointsPerGame)
+                .OrderByDescending(p => p.Points);
 			return new StandingsModel()
 			{
 				AllPlayers = players	

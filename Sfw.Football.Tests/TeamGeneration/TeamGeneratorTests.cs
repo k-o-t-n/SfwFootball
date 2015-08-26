@@ -34,7 +34,7 @@ namespace Sfw.Football.Tests.TeamGeneration
 
             for (int i = 1; i<= numberOfPlayers; i++)
             {
-                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Rating = 1 });
+                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Points = 1 });
             }
 
             var result = teamGenerator.GenerateTeams(selectedPlayers);
@@ -63,7 +63,7 @@ namespace Sfw.Football.Tests.TeamGeneration
 
             for (int i = 1; i <= numberOfPlayers; i++)
             {
-                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Rating = 1 });
+                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Points = 1 });
             }
 
             var result = teamGenerator.GenerateTeams(selectedPlayers);
@@ -84,17 +84,17 @@ namespace Sfw.Football.Tests.TeamGeneration
             IShuffler shuffler = A.Fake<IShuffler>();
             TeamGenerator teamGenerator = new TeamGenerator(shuffler);
 
-            Player player1 = new Player() { Id = 1, Name = "Name1", Rating = r1 };
-            Player player2 = new Player() { Id = 2, Name = "Name2", Rating = r2 };
-            Player player3 = new Player() { Id = 3, Name = "Name3", Rating = r3 };
-            Player player4 = new Player() { Id = 4, Name = "Name4", Rating = r4 };
+            Player player1 = new Player() { Id = 1, Name = "Name1", Points = r1 };
+            Player player2 = new Player() { Id = 2, Name = "Name2", Points = r2 };
+            Player player3 = new Player() { Id = 3, Name = "Name3", Points = r3 };
+            Player player4 = new Player() { Id = 4, Name = "Name4", Points = r4 };
 
             List<Player> selectedPlayers = new List<Player> { player1, player2, player3, player4 };
             
             var result = teamGenerator.GenerateTeams(selectedPlayers);
 
-            result.Item1.Sum(p => p.Rating).Should().Be(0);
-            result.Item2.Sum(p => p.Rating).Should().Be(0);
+            result.Item1.Sum(p => p.Points).Should().Be(0);
+            result.Item2.Sum(p => p.Points).Should().Be(0);
         }
 
         [InlineData(1, 1, 2)]
@@ -107,9 +107,9 @@ namespace Sfw.Football.Tests.TeamGeneration
             IShuffler shuffler = A.Fake<IShuffler>();
             TeamGenerator teamGenerator = new TeamGenerator(shuffler);
 
-            Player player1 = new Player() { Id = 1, Name = "Name1", Rating = r1 };
-            Player player2 = new Player() { Id = 2, Name = "Name2", Rating = r2 };
-            Player player3 = new Player() { Id = 3, Name = "Name3", Rating = r3 };
+            Player player1 = new Player() { Id = 1, Name = "Name1", Points = r1 };
+            Player player2 = new Player() { Id = 2, Name = "Name2", Points = r2 };
+            Player player3 = new Player() { Id = 3, Name = "Name3", Points = r3 };
 
             List<Player> selectedPlayers = new List<Player> { player1, player2, player3 };
 
@@ -117,8 +117,8 @@ namespace Sfw.Football.Tests.TeamGeneration
 
             int expected = (r1 + r2 + r3) / 2;
 
-            result.Item1.Sum(p => p.Rating).Should().Be(expected);
-            result.Item2.Sum(p => p.Rating).Should().Be(expected);
+            result.Item1.Sum(p => p.Points).Should().Be(expected);
+            result.Item2.Sum(p => p.Points).Should().Be(expected);
         }
     }
 }
