@@ -24,10 +24,25 @@ namespace Sfw.Football.ModelBuilders
         {
             var teamPlayers = _playerRepository.GetByIds(selectedIds).ToList();
             var teams = _teamGenerator.GenerateTeams(teamPlayers);
+            var team1score = 0d;
+            var team2score = 0d;
+
+            foreach (var player in teams.Item1)
+            {
+                team1score += player.PointsPerGame;
+            }
+
+            foreach (var player in teams.Item2)
+            {
+                team2score += player.PointsPerGame;
+            }
+
             return new TeamDisplayModel()
             {
                 Team1 = teams.Item1,
-                Team2 = teams.Item2
+                Team2 = teams.Item2,
+                Team1Score = team1score,
+                Team2Score = team2score
             };
         }
     }
