@@ -3,17 +3,14 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>SFW Wednesday Football League</h1>
-</div>
-
 <div class="col-md-4 col-md-offset-4">
-    <table class="table table-striped table-bordered">
+    <table class="table" id="standings">
         <thead>
             <tr>
                 <th>Position</th>
                 <th>Player</th>
-                <th>Rating</th>
+                <th>Points</th>
+                <th>PPG</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +19,8 @@
                 <tr>
                     <td>@(i + 1)</td>
                     <td>@Html.DisplayFor(m => m.AllPlayers.ElementAt(i).Name)</td>
-                    <td>@Html.DisplayFor(m => m.AllPlayers.ElementAt(i).Rating)</td>
+                    <td>@Html.DisplayFor(m => m.AllPlayers.ElementAt(i).Points)</td>
+                    <td>@Html.DisplayFor(m => m.AllPlayers.ElementAt(i).PointsPerGame)</td>
                 </tr>
             }
         </tbody>
