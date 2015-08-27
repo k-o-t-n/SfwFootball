@@ -34,7 +34,7 @@ namespace Sfw.Football.Tests.TeamGeneration
 
             for (int i = 1; i<= numberOfPlayers; i++)
             {
-                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Points = 1 });
+                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Points = 1, GamesPlayed = 1 });
             }
 
             var result = teamGenerator.GenerateTeams(selectedPlayers);
@@ -63,7 +63,7 @@ namespace Sfw.Football.Tests.TeamGeneration
 
             for (int i = 1; i <= numberOfPlayers; i++)
             {
-                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Points = 1 });
+                selectedPlayers.Add(new Player() { Id = i, Name = "Name" + i, Points = 1, GamesPlayed = 1 });
             }
 
             var result = teamGenerator.GenerateTeams(selectedPlayers);
@@ -72,53 +72,56 @@ namespace Sfw.Football.Tests.TeamGeneration
             result.Item2.Count().Should().Be((numberOfPlayers-1) / 2);
         }
 
-        [InlineData(1, 0, 0, -1)]
-        [InlineData(5, 0, 0, -5)]
-        [InlineData(1, 1, -1, -1)]
-        [InlineData(5, 5, -5, -5)]
-        [InlineData(2, 1, -1, -2)]
-        [InlineData(10, 5, -5, -10)]
+        [InlineData(2, 2, 1, 2, 1, 2, 0, 2)]
+        //PPG 1, 0.5, 0.5, 0
         [Theory]
-        public void GenerateTeams_GivenFourPlayers_PerfectSolutionsExist_PerfectSolutionFound(int r1, int r2, int r3, int r4)
+        public void GenerateTeams_GivenFourPlayers_PerfectSolutionsExist_PerfectSolutionFound(
+            int p1, int g1, 
+            int p2, int g2,
+            int p3, int g3,
+            int p4, int g4)
         {
             IShuffler shuffler = A.Fake<IShuffler>();
             TeamGenerator teamGenerator = new TeamGenerator(shuffler);
 
-            Player player1 = new Player() { Id = 1, Name = "Name1", Points = r1 };
-            Player player2 = new Player() { Id = 2, Name = "Name2", Points = r2 };
-            Player player3 = new Player() { Id = 3, Name = "Name3", Points = r3 };
-            Player player4 = new Player() { Id = 4, Name = "Name4", Points = r4 };
+            Player player1 = new Player() { Id = 1, Name = "Name1", Points = p1, GamesPlayed = g1 };
+            Player player2 = new Player() { Id = 2, Name = "Name2", Points = p2, GamesPlayed = g2 };
+            Player player3 = new Player() { Id = 3, Name = "Name3", Points = p3, GamesPlayed = g3 };
+            Player player4 = new Player() { Id = 4, Name = "Name4", Points = p4, GamesPlayed = g4 };
 
             List<Player> selectedPlayers = new List<Player> { player1, player2, player3, player4 };
             
             var result = teamGenerator.GenerateTeams(selectedPlayers);
 
-            result.Item1.Sum(p => p.Points).Should().Be(0);
-            result.Item2.Sum(p => p.Points).Should().Be(0);
+            result.Item1.Sum(p => p.PointsPerGame).Should().Be(1);
+            result.Item2.Sum(p => p.PointsPerGame).Should().Be(1);
         }
 
-        [InlineData(1, 1, 2)]
-        [InlineData(5, 5, 10)]
-        [InlineData(-1, 3, 2)]
-        [InlineData(2, 1, -1)]
+        [InlineData(2, 2, 1, 2, 1, 2)]
+        //PPG 1, 0.5, 0.5
         [Theory]
-        public void GenerateTeams_GivenThreePlayers_PerfectSolutionsExist_PerfectSolutionFound(int r1, int r2, int r3)
+        public void GenerateTeams_GivenThreePlayers_PerfectSolutionsExist_PerfectSolutionFound(
+            int p1, int g1,
+            int p2, int g2,
+            int p3, int g3)
         {
             IShuffler shuffler = A.Fake<IShuffler>();
             TeamGenerator teamGenerator = new TeamGenerator(shuffler);
 
-            Player player1 = new Player() { Id = 1, Name = "Name1", Points = r1 };
-            Player player2 = new Player() { Id = 2, Name = "Name2", Points = r2 };
-            Player player3 = new Player() { Id = 3, Name = "Name3", Points = r3 };
+            Player player1 = new Player() { Id = 1, Name = "Name1", Points = p1, GamesPlayed = g1 };
+            Player player2 = new Player() { Id = 2, Name = "Name2", Points = p2, GamesPlayed = g2 };
+            Player player3 = new Player() { Id = 3, Name = "Name3", Points = p3, GamesPlayed = g3 };
 
             List<Player> selectedPlayers = new List<Player> { player1, player2, player3 };
 
             var result = teamGenerator.GenerateTeams(selectedPlayers);
+            var r1 = (double)p1 / g1;
+            var r2 = (double)p2 / g2;
+            var r3 = (double)p3 / g3;
+            double expected = (r1 + r2 + r3) / 2;
 
-            int expected = (r1 + r2 + r3) / 2;
-
-            result.Item1.Sum(p => p.Points).Should().Be(expected);
-            result.Item2.Sum(p => p.Points).Should().Be(expected);
+            result.Item1.Sum(p => p.PointsPerGame).Should().Be(expected);
+            result.Item2.Sum(p => p.PointsPerGame).Should().Be(expected);
         }
     }
 }
