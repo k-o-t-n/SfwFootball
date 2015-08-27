@@ -58,7 +58,7 @@ namespace Sfw.Football.Helpers
             }
             else
             {
-                return GetPlayersPosition(previousPlayer) + 1;
+                return indexOfPlayer + 1;
             }
         }
     }
