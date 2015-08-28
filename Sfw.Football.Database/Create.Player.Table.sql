@@ -6,9 +6,7 @@
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-DELETE FROM `player`;
-
--- ratings correct as of 19-08-2015
+-- ratings correct as of 26-08-2015
 
 INSERT INTO `player`
 (`Id`,
@@ -30,4 +28,8 @@ VALUES
 (12,"Nicky Simillie",1,1),
 (13,"Dave Horsley",1,1),
 (14,"Ben Turner",1,1),
-(15,"Alan Gentle",0,0);
+(15,"Alan Gentle",0,0)
+ON DUPLICATE KEY UPDATE
+Name = VALUES(Name),
+Points = VALUES(Points),
+GamesPlayed = VALUES(GamesPlayed);
