@@ -13,7 +13,7 @@ namespace Sfw.Football.Models
         public int WinningTeam { get; set; }
         public DateTime Date { get; set; }
 
-        private string _seperator = Environment.NewLine;
+        private string _seperator = "\n";
 
         public string Team1Display
         {
