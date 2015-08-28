@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Create.Player.Table.sql" />
+    <Content Include="Create.Game.Table.sql" />
+    <Content Include="Create.Team.Table.sql" />
     <Content Include="Create.Users.Table.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

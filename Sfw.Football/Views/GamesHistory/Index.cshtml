@@ -1,0 +1,14 @@
+﻿@using GridMvc.Html
+@model Sfw.Football.Models.GameHistoryModel
+
+@{
+    ViewBag.Title = "Game History";
+}
+
+@Html.Grid(Model.Games).Named("gamesHistoryGrid").Columns(columns =>
+{
+    columns.Add(gh => gh.DateDisplay).Titled("Date");
+    columns.Add(gh => gh.Team1Display).Titled("Team 1");
+    columns.Add(gh => gh.Team2Display).Titled("Team 2");
+    columns.Add(gh => gh.WinningTeamDisplay).Titled("Winner");
+}))
