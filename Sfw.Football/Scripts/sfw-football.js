@@ -1,11 +1,19 @@
 ﻿$(function () {
-    pageGrids.allPlayersGrid.onRowSelect(function (e) {
-        // Flip the checkbox
-        var checkBox = $('#CheckBox' + e.row.Id);
-        checkBox.prop("checked", !checkBox.prop("checked"));
-        // Get closest row to checkbox
-        var selectedRow = checkBox.closest('tr');
-        // Toggle class on row
-        selectedRow.toggleClass("grid-row-selected");
-    });
+    if ($('div[data-gridname="allPlayersGrid"]').length)
+    {
+        pageGrids.allPlayersGrid.onRowSelect(function (e) {
+            // Flip the hidden checkbox
+            var checkBox = $('#CheckBox' + e.row.Id);
+            // Get closest row to checkbox
+            var selectedRow = checkBox.closest('tr');
+            if (selectedRow.hasClass('grid-row-selected')) {
+                selectedRow.removeClass('grid-row-selected');
+                checkBox.prop("checked", false);
+            }
+            else {
+                selectedRow.addClass('grid-row-selected');
+                checkBox.prop("checked", true);
+            }
+        });
+    }
 });
