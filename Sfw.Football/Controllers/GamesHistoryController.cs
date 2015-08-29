@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Sfw.Football.Controllers
 {
-    public class GamesHistoryController : Controller
+    public partial class GamesHistoryController : Controller
     {
         private readonly IGameHistoryModelBuilder _gameHistoryModelBuilder;
 
@@ -16,7 +16,7 @@ namespace Sfw.Football.Controllers
             _gameHistoryModelBuilder = gameHistoryModelBuilder;
         }
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             var model = _gameHistoryModelBuilder.BuildModel();
             return View(model);

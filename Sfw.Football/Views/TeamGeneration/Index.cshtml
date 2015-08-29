@@ -6,13 +6,13 @@
 }
 
 <h1>Select Players</h1>
-@using (Html.BeginForm("TeamGeneration", "Home", FormMethod.Post))
+@using (Html.BeginForm(MVC.TeamGeneration.Index(), FormMethod.Post))
 {
     @Html.Grid(Model.AllPlayers).Named("allPlayersGrid").Columns(columns =>
 {
     columns.Add(p => p.Id, true);
     columns.Add(p => p.Name).Titled("Name");
-    columns.Add(true)
+    columns.Add(false)
         .Sanitized(false)
         .Encoded(false)
         .RenderValueAs(o => "<input class='SelectPlayerCheckBox' type='checkbox' name='SelectCheckBox' value=" + o.Id + " id=CheckBox" + o.Id + " />");

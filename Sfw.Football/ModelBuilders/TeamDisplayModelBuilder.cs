@@ -5,7 +5,7 @@ using System.Web;
 using Sfw.Football.Models;
 using Sfw.Football.DataAccess.Repositories;
 using Sfw.Football.Helpers;
-using Sfw.Football.TeamGeneration;
+using Sfw.Football.Generators;
 
 namespace Sfw.Football.ModelBuilders
 {

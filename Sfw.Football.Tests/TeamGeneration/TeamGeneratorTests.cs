@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Sfw.Football.DataAccess.Entities;
 using Sfw.Football.Helpers;
-using Sfw.Football.TeamGeneration;
+using Sfw.Football.Generators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
