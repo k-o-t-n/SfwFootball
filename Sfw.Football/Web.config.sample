@@ -5,7 +5,7 @@
   -->
 <configuration>
   <connectionStrings>
-    <add name="DefaultConnection" connectionString="Database=SfwFootballDev;Data Source=eu-cdbr-azure-north-d.cloudapp.net;User Id=b9a4dd5491182f;Password=0eb4c396" providerName="MySql.Data.MySqlClient" />
+    <add name="DefaultConnection" connectionString="[placeholder]" providerName="MySql.Data.MySqlClient" />
   </connectionStrings>
   <appSettings>
     <add key="webpages:Version" value="3.0.0.0" />
