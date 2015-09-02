@@ -1,8 +1,33 @@
-﻿@{
+﻿@model Sfw.Football.Models.StandingsModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>SFW Wednesday Football League</h1>
+<div class="col-md-4 col-md-offset-2">
+    <table class="table" id="standings">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Player</th>
+                <th>Points</th>
+                <th>PPG</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.OrderedStandings.Count(); i++)
+            {
+                <tr>
+                    <td style="text-align:right;">@Model.OrderedStandings.ElementAt(i).Item1</td>
+                    <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.Name)</td>
+                    <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.Points)</td>
+                    <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.PointsPerGame)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
+<div class="col-md-4">
+    <p style="margin-top: 50px">Players get 1 point for a win. The standings are determined by points, with points per game used as a tie breaker.</p>
+    <p>The points per game for each player is used to generate fair teams by the @Html.ActionLink("team generation", MVC.TeamGeneration.Index()) tool.</p>
+</div>

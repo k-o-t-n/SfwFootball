@@ -10,5 +10,7 @@ namespace Sfw.Football.Models
     {
         public IEnumerable<Player> Team1 { get; set; }
         public IEnumerable<Player> Team2 { get; set; }
+        public double Team1Score { get; set; }
+        public double Team2Score { get; set; }
     }
 }

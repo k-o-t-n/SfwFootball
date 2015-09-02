@@ -1,0 +1,28 @@
+﻿@using GridMvc.Html
+@model Sfw.Football.Models.GameHistoryModel
+
+@{
+    ViewBag.Title = "Game History";
+}
+
+<table class="table" id="standings">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Winner</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var game in Model.Games.OrderByDescending(g => g.Date))
+        {
+            <tr>
+                <td>@game.DateDisplay</td>
+                <td>@Html.Raw(Html.Encode(game.Team1Display).Replace("\n", "<br />"))</td>
+                <td>@Html.Raw(Html.Encode(game.Team2Display).Replace("\n", "<br />"))</td>
+                <td>@game.WinningTeamDisplay</td>
+        </tr>
+        }
+    </tbody>
+</table>
