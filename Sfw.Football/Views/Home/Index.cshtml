@@ -10,6 +10,7 @@
                 <th>Position</th>
                 <th>Player</th>
                 <th>Points</th>
+                <th>GP</th>
                 <th>PPG</th>
             </tr>
         </thead>
@@ -20,7 +21,8 @@
                     <td style="text-align:right;">@Model.OrderedStandings.ElementAt(i).Item1</td>
                     <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.Name)</td>
                     <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.Points)</td>
-                    <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.PointsPerGame)</td>
+                    <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.GamesPlayed)</td>
+                    <td>@Html.DisplayFor(m => m.OrderedStandings.ElementAt(i).Item2.PointsPerGameDisplayed)</td>
                 </tr>
             }
         </tbody>
