@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Sfw.Football.Controllers
 {
+    [AllowAnonymous]
     public partial class GamesHistoryController : Controller
     {
         private readonly IGameHistoryModelBuilder _gameHistoryModelBuilder;

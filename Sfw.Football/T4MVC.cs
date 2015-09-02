@@ -27,11 +27,11 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static Sfw.Football.Controllers.AdminController Admin = new Sfw.Football.Controllers.T4MVC_AdminController();
+    public static Sfw.Football.Controllers.AuthController Auth = new Sfw.Football.Controllers.T4MVC_AuthController();
     public static Sfw.Football.Controllers.GamesHistoryController GamesHistory = new Sfw.Football.Controllers.T4MVC_GamesHistoryController();
     public static Sfw.Football.Controllers.HomeController Home = new Sfw.Football.Controllers.T4MVC_HomeController();
     public static Sfw.Football.Controllers.TeamGenerationController TeamGeneration = new Sfw.Football.Controllers.T4MVC_TeamGenerationController();
-    public static T4MVC.AccountController Account = new T4MVC.AccountController();
-    public static T4MVC.ManageController Manage = new T4MVC.ManageController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -80,9 +80,10 @@ namespace Links
         public static readonly string gridmvc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gridmvc.min.js") ? Url("gridmvc.min.js") : Url("gridmvc.js");
         public static readonly string gridmvc_lang_ru_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gridmvc.lang.ru.min.js") ? Url("gridmvc.lang.ru.min.js") : Url("gridmvc.lang.ru.js");
         public static readonly string jquery_1_10_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.intellisense.min.js") ? Url("jquery-1.10.2.intellisense.min.js") : Url("jquery-1.10.2.intellisense.js");
-        public static readonly string jquery_1_10_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.min.js") ? Url("jquery-1.10.2.min.js") : Url("jquery-1.10.2.js");
-        public static readonly string jquery_1_10_2_min_js = Url("jquery-1.10.2.min.js");
-        public static readonly string jquery_1_10_2_min_map = Url("jquery-1.10.2.min.map");
+        public static readonly string jquery_2_1_4_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.4.intellisense.min.js") ? Url("jquery-2.1.4.intellisense.min.js") : Url("jquery-2.1.4.intellisense.js");
+        public static readonly string jquery_2_1_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.4.min.js") ? Url("jquery-2.1.4.min.js") : Url("jquery-2.1.4.js");
+        public static readonly string jquery_2_1_4_min_js = Url("jquery-2.1.4.min.js");
+        public static readonly string jquery_2_1_4_min_map = Url("jquery-2.1.4.min.map");
         public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
         public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
@@ -123,8 +124,9 @@ namespace Links
                 public const string gridmvc_js = "~/Scripts/gridmvc.js"; 
                 public const string gridmvc_lang_ru_js = "~/Scripts/gridmvc.lang.ru.js"; 
                 public const string jquery_1_10_2_intellisense_js = "~/Scripts/jquery-1.10.2.intellisense.js"; 
-                public const string jquery_1_10_2_js = "~/Scripts/jquery-1.10.2.js"; 
-                public const string jquery_1_10_2_min_js = "~/Scripts/jquery-1.10.2.min.js"; 
+                public const string jquery_2_1_4_intellisense_js = "~/Scripts/jquery-2.1.4.intellisense.js"; 
+                public const string jquery_2_1_4_js = "~/Scripts/jquery-2.1.4.js"; 
+                public const string jquery_2_1_4_min_js = "~/Scripts/jquery-2.1.4.min.js"; 
                 public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
                 public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
                 public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 

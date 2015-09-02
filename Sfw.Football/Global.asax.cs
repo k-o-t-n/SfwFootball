@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Reflection;
+using Sfw.Football.Authentication;
+using Microsoft.AspNet.Identity;
 
 namespace Sfw.Football
 {
@@ -31,6 +33,8 @@ namespace Sfw.Football
             builder.RegisterAssemblyTypes(assemblies.ToArray())
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
+            builder.RegisterType<UserStore<AuthenticatedUser>>().As<IUserStore<AuthenticatedUser>>();
+            builder.RegisterType<UserManager<AuthenticatedUser>>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

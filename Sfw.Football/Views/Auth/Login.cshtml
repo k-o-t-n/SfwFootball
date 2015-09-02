@@ -1,0 +1,39 @@
+﻿@model Sfw.Football.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Login</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            <div class="col-md-4 col-md-offset-4">
+                
+                
+
+                <p>
+                    @Html.LabelFor(m => m.UserName)
+                    <br />
+                    @Html.EditorFor(m => m.UserName)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Password)
+                    <br />
+                    @Html.EditorFor(m => m.Password)
+                </p>
+          
+                <p>
+                    <button type="submit" class="btn btn-lg btn-primary">Log in</button>
+                </p>
+
+                @Html.ValidationSummary()
+
+            </div>
+        }
+    </div>
+</div>

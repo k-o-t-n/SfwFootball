@@ -1,4 +1,4 @@
-﻿CREATE TABLE IF NOT EXISTS `users` (
+﻿CREATE TABLE IF NOT EXISTS `user` (
 	`Id` varchar(128) NOT NULL,
 	`Email` varchar(256) DEFAULT NULL,
 	`PasswordHash` longtext,
@@ -6,9 +6,9 @@
 	PRIMARY KEY(`Id`)
 );
 
-DELETE FROM `users`;
+DELETE FROM `user`;
 
-INSERT INTO `users`
+INSERT INTO `user`
 (`Id`,
 `Email`,
 `PasswordHash`,
