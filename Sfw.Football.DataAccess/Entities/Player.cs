@@ -13,5 +13,11 @@ namespace Sfw.Football.DataAccess.Entities
         {
             get { return  GamesPlayed == 0 ? 0 : (double) Points / GamesPlayed; }
         }
+
+        [Ignore]
+        public string PointsPerGameDisplayed
+        {
+            get { return string.Format("{0:f2}", this.PointsPerGame); }
+        }
     }
 }

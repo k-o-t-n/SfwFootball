@@ -8,21 +8,21 @@
 @if (Model.Team1 != null && Model.Team1.Any() && Model.Team2 != null && Model.Team2.Any())
 {
     <h1>Team 1: The @Model.Team1Name</h1>
-    <h4>@Model.Team1.Count() players with total rating @Model.Team1.Sum(p => p.PointsPerGame)</h4>
+    <h4>@Model.Team1.Count() players with total rating @string.Format("{0:f2}", Model.Team1.Sum(p => p.PointsPerGame))</h4>
     @Html.Grid(Model.Team1).Named("team1Grid").Columns(columns =>
 {
     columns.Add(p => p.Id, true);
     columns.Add(p => p.Name).Titled("Name");
-    columns.Add(p => p.PointsPerGame).Titled("PPG");
+    columns.Add(p => p.PointsPerGameDisplayed).Titled("PPG");
 })
     <hr />
     <h1>Team 2: The @Model.Team2Name</h1>
-    <h4>@Model.Team2.Count() players with total rating @Model.Team2.Sum(p => p.PointsPerGame)</h4>
+    <h4>@Model.Team2.Count() players with total rating @string.Format("{0:f2}", Model.Team2.Sum(p => p.PointsPerGame))</h4>
     @Html.Grid(Model.Team2).Named("team2Grid").Columns(columns =>
 {
     columns.Add(p => p.Id, true);
     columns.Add(p => p.Name).Titled("Name");
-    columns.Add(p => p.PointsPerGame).Titled("PPG");
+    columns.Add(p => p.PointsPerGameDisplayed).Titled("PPG");
 })
 }
 
