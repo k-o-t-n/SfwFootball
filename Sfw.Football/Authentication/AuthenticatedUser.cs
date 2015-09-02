@@ -18,23 +18,19 @@ namespace Sfw.Football.Authentication
             }
         }
 
-        private string _userName;
-        public string UserName
-        {
-            get
-            {
-                return _userName;
-            }
+        public string UserName { get; set; }
+        public string PasswordHash { get; set; }
+        public string Email { get; set; }
 
-            set
-            {
-                _userName = value;
-            }
+        public AuthenticatedUser(string userName)
+        {
+            this.UserName = userName;
         }
 
-        public string PasswordHash { get; set; }
-
-        public string Email { get; set; }
+        public AuthenticatedUser(string userName, string email) : this(userName)
+        {
+            this.Email = email;
+        }
 
         public AuthenticatedUser(User user)
         {

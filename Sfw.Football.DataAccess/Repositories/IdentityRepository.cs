@@ -4,36 +4,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NPoco;
+using NPoco.Expressions;
 
 namespace Sfw.Football.DataAccess.Repositories
 {
     public class IdentityRepository : IIdentityRepository<User>
     {
-        private readonly PetaPoco.Database db = new PetaPoco.Database("defaultConnection");
+        private readonly Database db = new Database("defaultConnection");
 
-        public User FindById(string userId)
+        public Task CreateUserAsync(User user)
         {
-            var query = PetaPoco.Sql.Builder.Select("*").From("users").Where("Id = @userId", new { userId });
-            return db.Query<User>(query).Single();
+            return Task.FromResult(db.Insert(user));
+        }
+        
+        public Task DeleteUserAsync(User user)
+        {
+            return Task.FromResult(db.Delete(user));
         }
 
-        public User FindByName(string userName)
+        public void Dispose()
         {
-            var query = PetaPoco.Sql.Builder.Select("*").From("users").Where("UserName = @userName", new { userName });
-            var result = db.Query<User>(query).Single();
-            return result;
+            db.Dispose();
+        }
+        
+        public Task<User> FindByIdAsync(string userId)
+        {
+            return Task.FromResult(db.SingleById<User>(userId));
         }
 
-        public void SaveUser(User user)
+        public Task<User> FindByNameAsync(string userName)
         {
-            db.Update("users", "Id", user);
+            return Task.FromResult(
+                db.FetchBy<User>(sql => sql.Where(x => x.UserName == userName)).SingleOrDefault());
         }
 
-        public void SetPasswordHash(string userId, string passwordHash)
+        public Task SaveUserAsync(User user)
         {
-            var user = FindById(userId);
-            user.PasswordHash = passwordHash;
-            db.Update("users", "Id", user);
+            return Task.FromResult(db.Update(user));
         }
     }
 }

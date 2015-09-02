@@ -8,9 +8,11 @@ namespace Sfw.Football.DataAccess.Repositories
 {
     public interface IIdentityRepository<TUser>
     {
-        TUser FindById(string userId);
-        TUser FindByName(string userName);
-        void SetPasswordHash(string userId, string passwordHash);
-        void SaveUser(TUser user);
+        Task<TUser> FindByIdAsync(string userId);
+        Task<TUser> FindByNameAsync(string userName);
+        Task CreateUserAsync(TUser user);
+        Task DeleteUserAsync(TUser user);
+        Task SaveUserAsync(TUser user);
+        void Dispose();
     }
 }

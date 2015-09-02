@@ -16,10 +16,6 @@ namespace Sfw.Football.Controllers
     {
         private UserManager<AuthenticatedUser> _userManager;
 
-        public AuthController() : this(Startup.UserManagerFactory.Invoke())
-        {
-        }
-
         public AuthController(UserManager<AuthenticatedUser> userManager)
         {
             _userManager = userManager;

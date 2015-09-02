@@ -1,5 +1,4 @@
-﻿using Sfw.Football.DataAccess.Repositories;
-using Sfw.Football.ModelBuilders;
+﻿using Sfw.Football.ModelBuilders;
 using Sfw.Football.Models;
 using System;
 using System.Collections.Generic;
@@ -12,9 +11,7 @@ namespace Sfw.Football.Controllers
     [AllowAnonymous]
     public partial class HomeController : Controller
     {
-        private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
-        private readonly ITeamDisplayModelBuilder _teamDisplayModelBuilder;
-        private readonly IStandingsModelBuilder _standingsModelBuilder;
+        readonly IStandingsModelBuilder _standingsModelBuilder;
 
         public HomeController(IStandingsModelBuilder standingsModelBuilder)
         {

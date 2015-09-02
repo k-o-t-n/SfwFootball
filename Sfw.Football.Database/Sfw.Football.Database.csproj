@@ -46,7 +46,7 @@
     <Content Include="Create.Player.Table.sql" />
     <Content Include="Create.Game.Table.sql" />
     <Content Include="Create.Team.Table.sql" />
-    <Content Include="Create.Users.Table.sql" />
+    <Content Include="Create.User.Table.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

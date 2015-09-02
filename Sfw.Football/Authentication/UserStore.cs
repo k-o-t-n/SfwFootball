@@ -22,29 +22,32 @@ namespace Sfw.Football.Authentication
 
         public Task CreateAsync(TUser user)
         {
-            throw new NotImplementedException();
+            return _identities.CreateUserAsync(MapUser(user));
         }
 
         public Task DeleteAsync(TUser user)
         {
-            throw new NotImplementedException();
+            return _identities.DeleteUserAsync(MapUser(user));
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _identities.Dispose();
         }
 
         public async Task<TUser> FindByIdAsync(string userId)
         {
-            var result = new AuthenticatedUser(_identities.FindById(userId));
-            return await Task.FromResult(result as TUser);
+            return new AuthenticatedUser(await _identities.FindByIdAsync(userId)) as TUser;
         }
 
         public async Task<TUser> FindByNameAsync(string userName)
         {
-            var result = new AuthenticatedUser(_identities.FindByName(userName));
-            return await Task.FromResult(result as TUser);
+            var result = await _identities.FindByNameAsync(userName);
+            if (result != null)
+            {
+                return new AuthenticatedUser(result) as TUser;
+            }
+            return new AuthenticatedUser(userName) as TUser;
         }
 
         public async Task<string> GetPasswordHashAsync(TUser user)
@@ -59,18 +62,23 @@ namespace Sfw.Football.Authentication
 
         public Task SetPasswordHashAsync(TUser user, string passwordHash)
         {
-            _identities.SetPasswordHash(user.Id, passwordHash);
-            user.PasswordHash = passwordHash;
-            return Task.FromResult(0);
+            return Task.FromResult(user.PasswordHash = passwordHash);
         }
 
-        public Task UpdateAsync(TUser user)
+        public async Task UpdateAsync(TUser user)
         {
-            var userEntity = _identities.FindById(user.Id);
-            userEntity.Email = user.Email;
-            userEntity.PasswordHash = user.PasswordHash;
-            _identities.SaveUser(userEntity);
-            return Task.FromResult(0);
+            await _identities.SaveUserAsync(MapUser(user));
+        }
+
+        private User MapUser(TUser user)
+        {
+            return new User
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                PasswordHash = user.PasswordHash,
+                Email = user.Email
+            };
         }
     }
 }

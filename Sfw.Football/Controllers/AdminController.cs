@@ -52,5 +52,44 @@ namespace Sfw.Football.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Success()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            var model = new NewUserViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(NewUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = new AuthenticatedUser(model.UserName, model.Email);
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("success");
+            }
+            else
+            {
+                foreach (var errorMessage in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, errorMessage);
+                }
+
+                return View(model);
+            }
+        }
     }
 }
