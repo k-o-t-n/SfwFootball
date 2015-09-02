@@ -7,6 +7,7 @@ namespace Sfw.Football.Models
     {
         [Required]
         [DataType(DataType.Text)]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]

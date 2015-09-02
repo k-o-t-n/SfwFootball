@@ -2,20 +2,35 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Hello, @(User.Identity.Name)!</h2>
-
-@Html.ValidationSummary(true)
-
-@using (Html.BeginForm())
-{
-    @Html.EditorForModel()
-
-    <p>
-        <button type="submit" class="btn btn-lg btn-primary">Change password</button>
-    </p>
-}
-
-<p>
-    <a href="@Url.Action("logout", "auth")">Log out</a>
-</p>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Admin</h1>
+        <p>Logged in as @(User.Identity.Name)</p>
+        <p>@Html.ActionLink("Log out", MVC.Auth.LogOut(), new { @class = "btn btn-danger" })</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Add new admin user</h2>
+            <p>Create a new user with administrative priviledges.</p>
+            <p>
+                @Html.ActionLink("Go >>", MVC.Admin.Create(), new { @class = "btn btn-primary" })
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Add a new game</h2>
+            <p>Add the teams and the result for a game week.</p>
+            <p>
+                @Html.ActionLink("Go >>", MVC.Admin.Create(), new { @class = "btn btn-primary" })
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Add new players</h2>
+            <p>Add any new players to the website.</p>
+            <p>
+                @Html.ActionLink("Go >>", MVC.Admin.Create(), new { @class = "btn btn-primary" })
+            </p>
+        </div>
+    </div>
+</div>

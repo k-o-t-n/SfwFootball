@@ -73,20 +73,24 @@ namespace Sfw.Football.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string Success = "Success";
+            public readonly string Create = "Create";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string Success = "Success";
+            public const string Create = "Create";
         }
 
 
-        static readonly ActionParamsClass_Index s_params_Index = new ActionParamsClass_Index();
+        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Index IndexParams { get { return s_params_Index; } }
+        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Index
+        public class ActionParamsClass_Create
         {
             public readonly string model = "model";
         }
@@ -100,9 +104,13 @@ namespace Sfw.Football.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Create = "Create";
                 public readonly string Index = "Index";
+                public readonly string Success = "Success";
             }
+            public readonly string Create = "~/Views/Admin/Create.cshtml";
             public readonly string Index = "~/Views/Admin/Index.cshtml";
+            public readonly string Success = "~/Views/Admin/Success.cshtml";
         }
     }
 
@@ -123,14 +131,36 @@ namespace Sfw.Football.Controllers
         }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Sfw.Football.Models.AdminModel model);
+        partial void SuccessOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index(Sfw.Football.Models.AdminModel model)
+        public override System.Web.Mvc.ActionResult Success()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Success);
+            SuccessOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Create()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            CreateOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Sfw.Football.Models.NewUserViewModel model);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Create(Sfw.Football.Models.NewUserViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            IndexOverride(callInfo, model);
+            CreateOverride(callInfo, model);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 

@@ -31,7 +31,6 @@ namespace Sfw.Football
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/gridmvc.css",
-                      "~/Content/signin.css",
                       "~/Content/component.css"));
         }
     }

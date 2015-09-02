@@ -10,13 +10,9 @@ using System.Web.Mvc;
 
 namespace Sfw.Football.Controllers
 {
-    public class AdminController : AuthenticatedController
+    public partial class AdminController : Controller
     {
         private UserManager<AuthenticatedUser> _userManager;
-
-        public AdminController() : this(Startup.UserManagerFactory.Invoke())
-        {
-        }
 
         public AdminController(UserManager<AuthenticatedUser> userManager)
         {
@@ -24,50 +20,27 @@ namespace Sfw.Football.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
-            var model = new AdminModel();
-            return View(model);
+            return View();
         }
-
-        [HttpPost]
-        public async Task<ActionResult> Index(AdminModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            var result = await _userManager.ChangePasswordAsync(CurrentUser.Id, model.CurrentPassword, model.NewPassword);
-
-            if (result.Succeeded)
-            {
-                return RedirectToAction("logout", "auth");
-            }
-
-            foreach (var errorText in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, errorText);
-            }
-
-            return View(model);
-        }
+        
 
         [HttpGet]
-        public ActionResult Success()
+        public virtual ActionResult Success()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             var model = new NewUserViewModel();
             return View(model);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(NewUserViewModel model)
+        public virtual async Task<ActionResult> Create(NewUserViewModel model)
         {
             if (!ModelState.IsValid)
             {

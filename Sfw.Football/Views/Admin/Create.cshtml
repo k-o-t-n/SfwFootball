@@ -1,18 +1,38 @@
-﻿
+﻿@model Sfw.Football.Models.NewUserViewModel
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+<div class="jumbotron">
+    <div class="container">
+        <h1>Create new user</h1>
+    </div>
+</div>
 
 @Html.ValidationSummary(true)
 
-@using (Html.BeginForm())
-{
-    @Html.EditorForModel()
-
-    <p>
-        <button type="submit" class="btn btn-lg btn-primary">Create user</button>
-    </p>
-}
+<div class="container">
+    <div class="row">
+        @Html.ValidationSummary(true)
+        @using (Html.BeginForm())
+        {
+            <div class="col-md-2 col-md-offset-5">
+                <p>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.EditorFor(m => m.UserName)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.EditorFor(m => m.Password)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.EditorFor(m => m.Email)
+                </p>
+                <p>
+                    <button type="submit" class="btn btn-lg btn-primary">Create user</button>
+                </p>
+            </div>
+        }
+    </div>
+</div>

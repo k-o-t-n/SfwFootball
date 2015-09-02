@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Sfw.Football.Controllers
 {
+    [AllowAnonymous]
     public partial class TeamGenerationController : Controller
     {
         private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;

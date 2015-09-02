@@ -15,8 +15,6 @@ namespace Sfw.Football.Controllers
 
         public HomeController(IStandingsModelBuilder standingsModelBuilder)
         {
-            _teamGenerationModelBuilder = teamGenerationModelBuilder;
-            _teamDisplayModelBuilder = teamDisplayModelBuilder;
             _standingsModelBuilder = standingsModelBuilder;
         }
 

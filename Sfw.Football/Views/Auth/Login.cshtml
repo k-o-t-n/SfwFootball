@@ -2,15 +2,38 @@
 @{
     ViewBag.Title = "Login";
 }
+<div class="jumbotron">
+    <div class="container">
+        <h1>Login</h1>
+    </div>
+</div>
 
-@Html.ValidationSummary(true)
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            <div class="col-md-4 col-md-offset-4">
+                
+                
 
-@using (Html.BeginForm("login", "auth", FormMethod.Post, new { @class = "form-signin" }))
-{
-    <h2 class="form-signin-heading">Login</h2>
-    @Html.LabelFor(m => m.UserName, new { @class = "sr-only" })
-    @Html.EditorFor(m => m.UserName, new { @class = "form-control" })
-    @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
-    @Html.EditorFor(m => m.Password, new { @class = "form-control" })
-    <button type="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
-}
+                <p>
+                    @Html.LabelFor(m => m.UserName)
+                    <br />
+                    @Html.EditorFor(m => m.UserName)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Password)
+                    <br />
+                    @Html.EditorFor(m => m.Password)
+                </p>
+          
+                <p>
+                    <button type="submit" class="btn btn-lg btn-primary">Log in</button>
+                </p>
+
+                @Html.ValidationSummary()
+
+            </div>
+        }
+    </div>
+</div>

@@ -12,7 +12,7 @@ using System.Web.Mvc;
 namespace Sfw.Football.Controllers
 {
     [AllowAnonymous]
-    public class AuthController : Controller
+    public partial class AuthController : Controller
     {
         private UserManager<AuthenticatedUser> _userManager;
 
@@ -22,7 +22,7 @@ namespace Sfw.Football.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login(string returnUrl)
+        public virtual ActionResult Login(string returnUrl)
         {
             var model = new LoginModel()
             {
@@ -33,19 +33,18 @@ namespace Sfw.Football.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(LoginModel model)
+        public virtual async Task<ActionResult> Login(LoginModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(model);
             }
 
             var user = await _userManager.FindAsync(model.UserName, model.Password);
-            
-            //temp auth hack
+
             if (user != null)
             {
-                var identity = await _userManager.CreateIdentityAsync(user, "ApplicationCookie");
+                var identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                 var context = Request.GetOwinContext();
                 var authManager = context.Authentication;
 
@@ -54,25 +53,27 @@ namespace Sfw.Football.Controllers
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
             }
 
-            ModelState.AddModelError(string.Empty, "Invalid email or password");
-            return View();
+            ModelState.AddModelError("UserNotFound", "Invalid email or password");
+
+            return View(model);
         }
 
         [HttpGet]
-        public ActionResult LogOut()
+        public virtual ActionResult LogOut()
         {
             var context = Request.GetOwinContext();
             var authManager = context.Authentication;
 
-            authManager.SignOut("ApplicationCookie");
-            return RedirectToAction("index", "home");
+            authManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            return RedirectToAction(MVC.Home.Index());
         }
 
         private string GetRedirectUrl(string returnUrl)
         {
             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                return Url.Action("index", "home");
+                return Url.Action(MVC.Home.Index());
             }
 
             return returnUrl;
