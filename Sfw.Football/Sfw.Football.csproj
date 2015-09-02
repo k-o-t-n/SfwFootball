@@ -181,6 +181,8 @@
     <Compile Include="GamesHistoryController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generators\ITeamNameGenerator.cs" />
+    <Compile Include="Generators\TeamNameGenerator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,6 +226,7 @@
     </Compile>
     <Compile Include="Generators\ITeamGenerator.cs" />
     <Compile Include="Generators\TeamGenerator.cs" />
+    <Compile Include="Constants\TeamNames.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
