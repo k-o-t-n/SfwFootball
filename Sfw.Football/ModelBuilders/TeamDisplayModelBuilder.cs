@@ -30,8 +30,8 @@ namespace Sfw.Football.ModelBuilders
 
             return new TeamDisplayModel()
             {
-                Team1 = teams.Item1,
-                Team2 = teams.Item2,
+                Team1 = teams.Item1.ToList(),
+                Team2 = teams.Item2.ToList(),
                 Team1Name = teamNames.Item1,
                 Team2Name = teamNames.Item2
             };
