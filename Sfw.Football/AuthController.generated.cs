@@ -23,10 +23,16 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
+
+
+
 namespace Sfw.Football.Controllers
 {
+
     public partial class AuthController
     {
+
+
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected AuthController(Dummy d) { }
 
@@ -56,12 +62,18 @@ namespace Sfw.Football.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Login()
         {
+
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+
         }
+
+
+
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AuthController Actions { get { return MVC.Auth; } }
@@ -78,16 +90,27 @@ namespace Sfw.Football.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+
+
             public readonly string Login = "Login";
+
+
             public readonly string LogOut = "LogOut";
+
         }
+
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+
             public const string Login = "Login";
+
             public const string LogOut = "LogOut";
+
         }
+
+
 
 
         static readonly ActionParamsClass_Login s_params_Login = new ActionParamsClass_Login();
@@ -96,29 +119,42 @@ namespace Sfw.Football.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Login
         {
+
+
             public readonly string returnUrl = "returnUrl";
+
+
             public readonly string model = "model";
+
         }
+
+
+
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewsClass
         {
-            static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
-            public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
-            public class _ViewNamesClass
-            {
-                public readonly string Login = "Login";
-            }
-            public readonly string Login = "~/Views/Auth/Login.cshtml";
+
+static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+public class _ViewNamesClass
+{
+public readonly string Login = "Login";
+            
+}
+public readonly string Login = "~/Views/Auth/Login.cshtml";
+
         }
     }
+
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public partial class T4MVC_AuthController : Sfw.Football.Controllers.AuthController
     {
         public T4MVC_AuthController() : base(Dummy.Instance) { }
+
 
         [NonAction]
         partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string returnUrl);
@@ -127,10 +163,17 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult Login(string returnUrl)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+
+
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
+
+
             LoginOverride(callInfo, returnUrl);
+
             return callInfo;
+
         }
+
 
         [NonAction]
         partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Sfw.Football.Models.LoginModel model);
@@ -139,10 +182,17 @@ namespace Sfw.Football.Controllers
         public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Login(Sfw.Football.Models.LoginModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+
+
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+
+
             LoginOverride(callInfo, model);
+
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+
         }
+
 
         [NonAction]
         partial void LogOutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -151,12 +201,20 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult LogOut()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOut);
+
             LogOutOverride(callInfo);
+
             return callInfo;
+
         }
 
+
     }
+
+
 }
+
+
 
 #endregion T4MVC
 #pragma warning restore 1591, 3008, 3009, 0108, 0114

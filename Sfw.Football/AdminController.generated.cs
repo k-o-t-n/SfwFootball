@@ -23,10 +23,16 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
+
+
+
 namespace Sfw.Football.Controllers
 {
+
     public partial class AdminController
     {
+
+
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected AdminController(Dummy d) { }
 
@@ -57,6 +63,9 @@ namespace Sfw.Football.Controllers
         }
 
 
+
+
+
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AdminController Actions { get { return MVC.Admin; } }
         [GeneratedCode("T4MVC", "2.0")]
@@ -72,18 +81,32 @@ namespace Sfw.Football.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+
+
             public readonly string Index = "Index";
+
+
             public readonly string Success = "Success";
+
+
             public readonly string Create = "Create";
+
         }
+
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+
             public const string Index = "Index";
+
             public const string Success = "Success";
+
             public const string Create = "Create";
+
         }
+
+
 
 
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
@@ -92,32 +115,43 @@ namespace Sfw.Football.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
+
+
             public readonly string model = "model";
+
         }
+
+
+
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewsClass
         {
-            static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
-            public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
-            public class _ViewNamesClass
-            {
-                public readonly string Create = "Create";
+
+static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+public class _ViewNamesClass
+{
+public readonly string Create = "Create";
                 public readonly string Index = "Index";
                 public readonly string Success = "Success";
-            }
-            public readonly string Create = "~/Views/Admin/Create.cshtml";
+            
+}
+public readonly string Create = "~/Views/Admin/Create.cshtml";
             public readonly string Index = "~/Views/Admin/Index.cshtml";
             public readonly string Success = "~/Views/Admin/Success.cshtml";
+
         }
     }
+
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public partial class T4MVC_AdminController : Sfw.Football.Controllers.AdminController
     {
         public T4MVC_AdminController() : base(Dummy.Instance) { }
+
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -126,9 +160,13 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult Index()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+
             IndexOverride(callInfo);
+
             return callInfo;
+
         }
+
 
         [NonAction]
         partial void SuccessOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -137,9 +175,13 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult Success()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Success);
+
             SuccessOverride(callInfo);
+
             return callInfo;
+
         }
+
 
         [NonAction]
         partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -148,9 +190,13 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult Create()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+
             CreateOverride(callInfo);
+
             return callInfo;
+
         }
+
 
         [NonAction]
         partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Sfw.Football.Models.NewUserViewModel model);
@@ -159,13 +205,24 @@ namespace Sfw.Football.Controllers
         public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Create(Sfw.Football.Models.NewUserViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+
+
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+
+
             CreateOverride(callInfo, model);
+
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+
         }
 
+
     }
+
+
 }
+
+
 
 #endregion T4MVC
 #pragma warning restore 1591, 3008, 3009, 0108, 0114
