@@ -15,7 +15,9 @@ INSERT INTO `game`
 `Date`)
 VALUES
 (1,1,2,2,"2015-08-19"),
-(2,3,4,3,"2015-08-26")
+(2,3,4,3,"2015-08-26"),
+(3,5,6,5,"2015-09-02"),
+(4,7,8,8,"2015-09-09")
 ON DUPLICATE KEY UPDATE 
 Team1Id = VALUES(Team1Id), 
 Team2Id = VALUES(Team2Id), 

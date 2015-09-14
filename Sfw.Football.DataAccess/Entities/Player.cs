@@ -5,7 +5,11 @@ namespace Sfw.Football.DataAccess.Entities
     public class Player : BaseEntity
     {
         public string Name { get; set; }
+
+        [Ignore]
         public int Points { get; set; }
+
+        [Ignore]
         public int GamesPlayed { get; set; }
 
         [Ignore]

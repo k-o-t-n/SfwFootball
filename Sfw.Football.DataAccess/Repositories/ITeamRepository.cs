@@ -10,5 +10,6 @@ namespace Sfw.Football.DataAccess.Repositories
     public interface ITeamRepository
     {
         IEnumerable<Player> GetAllPlayersByTeamId(int id);
+        IEnumerable<Team> GetAllTeamsFeaturingPlayer(int id);
     }
 }

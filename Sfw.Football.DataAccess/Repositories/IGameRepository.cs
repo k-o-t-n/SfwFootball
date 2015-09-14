@@ -11,5 +11,7 @@ namespace Sfw.Football.DataAccess.Repositories
     {
         Game GetGameById(int id);
         IEnumerable<Game> GetAllGames();
+        IEnumerable<Game> GamesFeaturingTeam(int id);
+        IEnumerable<Game> GamesWonByTeam(int id);
     }
 }
