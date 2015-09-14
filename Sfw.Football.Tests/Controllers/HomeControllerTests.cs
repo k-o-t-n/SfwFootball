@@ -9,8 +9,6 @@ namespace Sfw.Football.Tests.Controllers
 {
     public class HomeControllerTests
     {
-        private ITeamGenerationModelBuilder teamGenerationModelBuilder;
-        private ITeamDisplayModelBuilder teamDisplayModelBuilder;
         private IStandingsModelBuilder standingsModelBuilder;
         private HomeController controller;
 

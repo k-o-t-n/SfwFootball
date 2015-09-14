@@ -12,6 +12,16 @@ namespace Sfw.Football.DataAccess.Repositories
     {
         private Database db = new Database("defaultConnection");
 
+        public IEnumerable<Game> GamesFeaturingTeam(int id)
+        {
+            return db.FetchWhere<Game>(g => g.Team1Id == id || g.Team2Id == id);
+        }
+
+        public IEnumerable<Game> GamesWonByTeam(int id)
+        {
+            return db.FetchWhere<Game>(g => g.WinningTeamId == id);
+        }
+
         public IEnumerable<Game> GetAllGames()
         {
             return db.Fetch<Game>();

@@ -23,10 +23,16 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
+
+
+
 namespace Sfw.Football.Controllers
 {
+
     public partial class TeamGenerationController
     {
+
+
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected TeamGenerationController(Dummy d) { }
 
@@ -57,6 +63,18 @@ namespace Sfw.Football.Controllers
         }
 
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Regenerate()
+        {
+
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Regenerate);
+
+        }
+
+
+
+
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public TeamGenerationController Actions { get { return MVC.TeamGeneration; } }
         [GeneratedCode("T4MVC", "2.0")]
@@ -72,16 +90,32 @@ namespace Sfw.Football.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+
+
             public readonly string Index = "Index";
+
+
             public readonly string Display = "Display";
+
+
+            public readonly string Regenerate = "Regenerate";
+
         }
+
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+
             public const string Index = "Index";
+
             public const string Display = "Display";
+
+            public const string Regenerate = "Regenerate";
+
         }
+
+
 
 
         static readonly ActionParamsClass_Index s_params_Index = new ActionParamsClass_Index();
@@ -90,30 +124,53 @@ namespace Sfw.Football.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Index
         {
+
+
             public readonly string formCollection = "formCollection";
+
         }
+
+        static readonly ActionParamsClass_Regenerate s_params_Regenerate = new ActionParamsClass_Regenerate();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Regenerate RegenerateParams { get { return s_params_Regenerate; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Regenerate
+        {
+
+
+            public readonly string model = "model";
+
+        }
+
+
+
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewsClass
         {
-            static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
-            public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
-            public class _ViewNamesClass
-            {
-                public readonly string Display = "Display";
+
+static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+public class _ViewNamesClass
+{
+public readonly string Display = "Display";
                 public readonly string Index = "Index";
-            }
-            public readonly string Display = "~/Views/TeamGeneration/Display.cshtml";
+            
+}
+public readonly string Display = "~/Views/TeamGeneration/Display.cshtml";
             public readonly string Index = "~/Views/TeamGeneration/Index.cshtml";
+
         }
     }
+
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public partial class T4MVC_TeamGenerationController : Sfw.Football.Controllers.TeamGenerationController
     {
         public T4MVC_TeamGenerationController() : base(Dummy.Instance) { }
+
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -122,9 +179,13 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult Index()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+
             IndexOverride(callInfo);
+
             return callInfo;
+
         }
+
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Web.Mvc.FormCollection formCollection);
@@ -133,10 +194,17 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult Index(System.Web.Mvc.FormCollection formCollection)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+
+
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "formCollection", formCollection);
+
+
             IndexOverride(callInfo, formCollection);
+
             return callInfo;
+
         }
+
 
         [NonAction]
         partial void DisplayOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -145,12 +213,39 @@ namespace Sfw.Football.Controllers
         public override System.Web.Mvc.ActionResult Display()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Display);
+
             DisplayOverride(callInfo);
+
             return callInfo;
+
         }
 
+
+        [NonAction]
+        partial void RegenerateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Sfw.Football.Models.TeamDisplayModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Regenerate(Sfw.Football.Models.TeamDisplayModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Regenerate);
+
+
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+
+
+            RegenerateOverride(callInfo, model);
+
+            return callInfo;
+
+        }
+
+
     }
+
+
 }
+
+
 
 #endregion T4MVC
 #pragma warning restore 1591, 3008, 3009, 0108, 0114

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Sfw.Football.Controllers
 {
+    [AllowAnonymous]
     public partial class TeamGenerationController : Controller
     {
         private readonly ITeamGenerationModelBuilder _teamGenerationModelBuilder;
@@ -30,9 +31,10 @@ namespace Sfw.Football.Controllers
         [HttpPost]
         public virtual ActionResult Index(FormCollection formCollection)
         {
-            if (formCollection.GetValues("selectCheckBox") != null && formCollection.GetValues("selectCheckBox").Count() > 1)
+            var selectedValues = formCollection.GetValues("selectCheckBox");
+            if (selectedValues != null && selectedValues.Count() > 1)
             {
-                var selectedIds = formCollection.GetValues("selectCheckBox").Select(int.Parse).ToList();
+                var selectedIds = selectedValues.Select(int.Parse).ToList();
                 TempData["selectedIds"] = selectedIds;
                 return RedirectToAction(MVC.TeamGeneration.Display());
             }
@@ -42,13 +44,21 @@ namespace Sfw.Football.Controllers
         [HttpGet]
         public virtual ActionResult Display()
         {
-            IEnumerable<int> selectedIds = (IEnumerable<int>)TempData["selectedIds"];
+            List<int> selectedIds = (List<int>)TempData["selectedIds"];
             if (selectedIds != null && selectedIds.Count() > 1)
             {
                 TeamDisplayModel model = _teamDisplayModelBuilder.BuildModel(selectedIds);
                 return View(model);
             }
             return RedirectToAction(MVC.TeamGeneration.Index());
+        }
+
+        [HttpPost]
+        public virtual ActionResult Regenerate(TeamDisplayModel model)
+        {
+            List<int> selectedIds = model.Team1.Select(p => p.Id).Union(model.Team2.Select(p => p.Id)).ToList();
+            TempData["selectedIds"] = selectedIds;
+            return RedirectToAction(MVC.TeamGeneration.Display());
         }
     }
 }

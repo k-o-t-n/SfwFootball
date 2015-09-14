@@ -13,36 +13,27 @@ namespace Sfw.Football.ModelBuilders
     {
         private readonly IPlayerRepository _playerRepository;
         private readonly ITeamGenerator _teamGenerator;
+        private readonly ITeamNameGenerator _teamNameGenerator;
 
-        public TeamDisplayModelBuilder(IPlayerRepository playerRepository, ITeamGenerator teamGenerator)
+        public TeamDisplayModelBuilder(IPlayerRepository playerRepository, ITeamGenerator teamGenerator, ITeamNameGenerator teamNameGenerator)
         {
             _playerRepository = playerRepository;
             _teamGenerator = teamGenerator;
+            _teamNameGenerator = teamNameGenerator;
         }
 
         public TeamDisplayModel BuildModel(IEnumerable<int> selectedIds)
         {
             var teamPlayers = _playerRepository.GetByIds(selectedIds).ToList();
             var teams = _teamGenerator.GenerateTeams(teamPlayers);
-            var team1score = 0d;
-            var team2score = 0d;
-
-            foreach (var player in teams.Item1)
-            {
-                team1score += player.PointsPerGame;
-            }
-
-            foreach (var player in teams.Item2)
-            {
-                team2score += player.PointsPerGame;
-            }
+            var teamNames = _teamNameGenerator.GenerateTeamNames();
 
             return new TeamDisplayModel()
             {
-                Team1 = teams.Item1,
-                Team2 = teams.Item2,
-                Team1Score = team1score,
-                Team2Score = team2score
+                Team1 = teams.Item1.ToList(),
+                Team2 = teams.Item2.ToList(),
+                Team1Name = teamNames.Item1,
+                Team2Name = teamNames.Item2
             };
         }
     }
