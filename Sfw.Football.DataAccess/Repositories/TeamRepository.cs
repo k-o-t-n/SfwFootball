@@ -18,5 +18,10 @@ namespace Sfw.Football.DataAccess.Repositories
 
             return db.FetchWhere<Player>(p => teamPlayers.Select(tp => tp.PlayerId).Contains(p.Id));
         }
+
+        public IEnumerable<Team> GetAllTeamsFeaturingPlayer(int id)
+        {
+            return db.FetchWhere<Team>(t => t.PlayerId == id);
+        }
     }
 }
